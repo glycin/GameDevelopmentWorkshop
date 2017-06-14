@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="Highlightjs/styles/vs2015.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="Highlightjs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div class ="container">
+    <h1> Game Development Workshop </h1>
+</div>
+<div class="container">
+    <div class="fixed">
+        <h4> The Editor </h4>
+        <h4> Components </h4>
+        <h4> UI</h4>
+        <h4> Physics</h4>
+        <h4>Materials</h4>
+        <h4>Manipulating objects</h4>
+        <h4> Script Coupling</h4>
+        <h4> Animations</h4>
+        <h4> Audio </h4>
+        <h4> Scene Management </h4>
+        <h4> Build Options </h4>       
+        <h4> Lighting </h4>
+        <h4> Navigation </h4>    
+        <h4> Scripting </h4>
+        <h4> Effects </h4>
+        <h4> Controls </h4>
+        <h4> Web Calls </h4>
+        <h4> Tips & Tricks</h4>
+        <h4> Virtual Reality </h4>
+        <h4> Advanced </h4>
+    </div>
+    <div class="flex-item">
+        <h2> Unity editor</h2>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </p>
+        <pre><code class ="cs"> 
+            private List<Simulator.NavigationPoint> navigationPoints;
+            private int travelIndex;
+            public float speed = 10;
+            public float maxSpeed = 40f;
+            private float targetSpeed;
+            public float acceleration = 5f;
+            public string trainID;
+            public GameObject frontCamera;
+            public bool autoControlled = true;
+            private bool activeTrain;
+            public bool OnMove { get; private set; }
+            public GameObject model;
+            public GameObject headWagon;
+
+            public float Angle {
+                get {
+                    var rotation = headWagon.transform.rotation.eulerAngles.y%360 - 90;
+                    return rotation;
+                }
+            }
+            public int NavigationIndex { get {
+                    return travelIndex;
+                }
+            }
+            public int NavigationPointCount { get { return navigationPoints.Count; } }
+
+            private void OnDestroy() {
+                Events.Instance.Unsubscribe<Events.ToggleTrainView>(ToggleTrainView);
+                Events.Instance.Unsubscribe<Events.ResetTrainView>(StopView);
+            }
+        </code></pre>
+        <center><img src="https://68.media.tumblr.com/040d77e95e37f05fbc14b0b8ae3d3177/tumblr_opsismTLqh1vghf22o1_400.gif"/></center>
+        <center><img src="http://www.speak-simple.com/blog/wp-content/uploads/2013/03/Surprised.jpg"/></center>
+    </div>
+</div>
