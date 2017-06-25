@@ -31,42 +31,41 @@
     </div>
     <div class="flex-item">
         <h2> Unity editor</h2>
-        <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        </p>
-        <pre><code class ="cs"> 
-            private List<Simulator.NavigationPoint> navigationPoints;
-            private int travelIndex;
-            public float speed = 10;
-            public float maxSpeed = 40f;
-            private float targetSpeed;
-            public float acceleration = 5f;
-            public string trainID;
-            public GameObject frontCamera;
-            public bool autoControlled = true;
-            private bool activeTrain;
-            public bool OnMove { get; private set; }
-            public GameObject model;
-            public GameObject headWagon;
-
-            public float Angle {
-                get {
-                    var rotation = headWagon.transform.rotation.eulerAngles.y%360 - 90;
-                    return rotation;
-                }
-            }
-            public int NavigationIndex { get {
-                    return travelIndex;
-                }
-            }
-            public int NavigationPointCount { get { return navigationPoints.Count; } }
-
-            private void OnDestroy() {
-                Events.Instance.Unsubscribe<Events.ToggleTrainView>(ToggleTrainView);
-                Events.Instance.Unsubscribe<Events.ResetTrainView>(StopView);
-            }
+        <p>Here you can find information regarding the Unity editor and its layout. Every tab is draggable and rearangable, so you can design the editor to your liking. The Unity Editor is fully extendible, and someday you might even build your very own editor scripts!</p>
+        
+        <h3> The Scene View</h3>
+        <p> The scene view is the main view for developming within Unity. Every object you create is visible in the scene view. Using the moving tools you can position, rotate and scale the selected objects.Using the mouse you can rotate and reposition the camera, allowing you to get a clear view of everything that is happening in you scene!</p>
+        <center><img src="Images/SceneView.png"/></center>
+        
+        <h3> The Game View</h3>
+        <p> The game view actually shows how the game will show during run time. The game you are creating is fully playable and observable in the game view. That means you can quickly test your changes just by pressing the Play button.</p>
+        <center><img src="Images/GameView.png"/></center>
+        
+        <h3> The Hierarchy Window</h3>
+        <p> In the Hierarchy window you can find a list of all the current objects in your scene. You can use this window to quickly search and find a certain object. Furthermore this functions alot like a file explorer. You can drag and drop objects under other objects in order to parent them. Parented objects inherit the position, scale and rotation of the parent. This window is also the place where you can delete unwanted objects or create new ones. </p>
+        <center><img src="Images/hierarchyWindow.png"/></center>
+        
+        <h3> The Project Window</h3>
+        <p> The project window shows everything that is within your Assets folder. It's completely identical to the structure you see within the file explorer. Everything you change within the file explorer will be reflected in the project window and vice-versa. Try to keep your assets organized, since you will be needing them to create your game, and finding them quickly is essential. </p>
+        <center><img src="Images/projectWindow.png"/></center>
+        
+        <h3> The Inspector Window </h3>
+        <p> In the Inspector window you can view and modify the components of the selected game objects. If the objects share the same components, you can edit the values of the components simultaneously. You can drag and drop scripts in the Inspector to add them to the selected game objects. You can also press the add component button and select the component you need. All object modification happens here in the inspector window. You can change the name, tag, layer, position, rotation, scale, material etc. of the object.</p>
+        <center><img src="Images/inspectorWindow.png"/></center>
+        
+        <h3> The debugging console </h3>
+        <p> The console window is the output window. Errors, exceptions, warnings and logs are shown here during runtime. Double click the message and the IDE of your choosing will open up and jump to the line that produced the message. You can log messages using the following code:</p>
+        <pre><code class ="cs">
+            // Using the Debug static class: https://docs.unity3d.com/ScriptReference/Debug.html
+            Debug.Log("The name of this gameObject is: " + gameObject.name);
+            //Or
+            print("the name of this gameObject is: " + gameObject.name);
         </code></pre>
-        <center><img src="https://68.media.tumblr.com/040d77e95e37f05fbc14b0b8ae3d3177/tumblr_opsismTLqh1vghf22o1_400.gif"/></center>
-        <center><img src="http://www.speak-simple.com/blog/wp-content/uploads/2013/03/Surprised.jpg"/></center>
+        <center><img src="Images/ConsoleWindow.png"/></center>
+        
+        <h3> Tags and Layers</h3>
+        <p> Tags and Layers allow us to define some common functionality across unrelated game objects. For example some physics operations can ignore objects in certain layers. Or some triggers will react only to objects with a certain tag. Using this you can easily group objects wich should react in a similar way to certain actions. To define new tags and layers you click on an object and in the Inspector you click on the drop down menu. </p>
+        <center><img src="Images/TagLayer.png"/></center>
+        <p> Once the drop down menu appears, you click on "Add Tag" or "Add Layer" and then press the "+" icon to add a new tag or layer</p>
     </div>
 </div>
