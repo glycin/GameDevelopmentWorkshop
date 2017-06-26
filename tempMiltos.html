@@ -79,38 +79,76 @@
 <!-- PHYSICS -->
 <div id="Physics" class="tabcontent">
   <h2>Physics</h2>
-  <p>There are ...</p>
+  <p>If enabled, per object, physics control the interaction between objects via movement and collision.</p>
   <div class="htab">
     <button class="htablinks" onclick="openHTab(event, 'Rigidbody')">Rigidbody</button>
     <button class="htablinks" onclick="openHTab(event, 'Colliders')">Colliders</button>
     <button class="htablinks" onclick="openHTab(event, 'PhysicsMaterials')">Physics Materials</button>
     <button class="htablinks" onclick="openHTab(event, 'Triggers')">Triggers</button>
     <button class="htablinks" onclick="openHTab(event, 'PhysicsScript')">Scripts</button>
-    <button class="htablinks" onclick="openHTab(event, 'PhysicsLayers')">Layers</button>
   </div>
   <div id="Rigidbody" class="htabcontent">
         <h3>Rigidbody</h3>
-    Content
+    <p>The main way to add physics to an object is by adding a <a href="https://docs.unity3d.com/ScriptReference/Rigidbody.html">Rigidbody</a> component to it.<br><br>
+    By default, gravity will act upon the object, making it start falling (and rotating).<br>
+    It is possible to disable all imposed movement by ticking "Is Kinematic" on the rigidbody. 
+    </p>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/rigidbody.mp4" type = "video/mp4">
+        </video></center>
   </div>
   <div id="Colliders" class="htabcontent">
         <h3>Colliders</h3>
-    Content
+    Colliders represent the physical space that an object occupies. <br><br>
+    It does not necessarily align with the graphical representation of that model, nor does it require that the model must have a renderer.<br>
+    An object can have multiple collider components. 
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/collider.mp4" type = "video/mp4">
+        </video></center>
   </div>
   <div id="PhysicsMaterials" class="htabcontent">
         <h3>Physics Materials</h3>
+        Physics materials are part of colliders and control how physics objects interact when in contact with other colliders.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/physicsMaterial.mp4" type = "video/mp4">
+        </video></center>
     Content
   </div>
   <div id="Triggers" class="htabcontent">
         <h3>Triggers</h3>
+        When "Is Trigger" is checked in a collider component, it will still send collision messages, but it will not collider with other objects.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/triggerCollider.mp4" type = "video/mp4">
+        </video></center>
     Content
   </div>
   <div id="PhysicsScript" class="htabcontent">
         <h3>Physics in scripts</h3>
-    Content
-  </div>
-  <div id="PhysicsLayers" class="htabcontent">
-        <h3>Physics Layers</h3>
-    Content
+    Without a rigidbody, collision messages are not sent to objects. At least one of the two colliding objects must have a rigidbody.<br><br>
+    The following example shows how to react to certain types of collisions.
+    <pre><code class ="cs">
+    // When a collision happens
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.name == "Ball") {
+            GetComponent<Renderer>().material.color = Color.red;
+        } else {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+    }
+
+    // While touching a trigger collider
+    private void OnTriggerStay(Collider other) {
+        GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    // When stopped touching a trigger collider
+    private void OnTriggerExit(Collider other) {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+        </code></pre>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/collisionScript.mp4" type = "video/mp4">
+        </video></center>
   </div>
 </div>
 <!-- SCRIPT COUPLING -->
