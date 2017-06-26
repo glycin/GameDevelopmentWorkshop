@@ -1,61 +1,80 @@
 <link rel="stylesheet" href="Highlightjs/styles/vs2015.css">
 <link rel="stylesheet" href="css/styles.css">
 <script src="Highlightjs/highlight.pack.js"></script>
+<script src="tabs.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <div class ="container">
     <h1> Game Development Workshop </h1>
 </div>
-<div class="container">
-    <div class="fixed">
-        <h4> The Editor </h4>
-        <h4> Components </h4>
-        <h4> UI</h4>
-        <h4> Physics</h4>
-        <h4>Materials</h4>
-        <h4>Manipulating objects</h4>
-        <h4> Script Coupling</h4>
-        <h4> Animations</h4>
-        <h4> Audio </h4>
-        <h4> Scene Management </h4>
-        <h4> Build Options </h4>       
-        <h4> Lighting </h4>
-        <h4> Navigation </h4>    
-        <h4> Scripting </h4>
-        <h4> Effects </h4>
-        <h4> Controls </h4>
-        <h4> Web Calls </h4>
-        <h4> Tips & Tricks</h4>
-        <h4> Virtual Reality </h4>
-        <h4> Advanced </h4>
-    </div>
-    <div class="flex-item">
-        <h2> Unity editor</h2>
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Editor')">The Editor</button>
+  <button class="tablinks" onclick="openTab(event, 'Components')">Components</button>
+  <button class="tablinks" onclick="openTab(event, 'UI')">UI</button>
+  <button class="tablinks" onclick="openTab(event, 'Physics')">Physics</button>
+  <button class="tablinks" onclick="openTab(event, 'Materials')">Materials</button>
+  <button class="tablinks" onclick="openTab(event, 'Objects')">Manipulating Objects</button>
+  <button class="tablinks" onclick="openTab(event, 'Coupling')">Script Coupling</button>
+  <button class="tablinks" onclick="openTab(event, 'Animations')">Animations</button>
+  <button class="tablinks" onclick="openTab(event, 'Audio')">Audio</button>
+  <button class="tablinks" onclick="openTab(event, 'Scenes')">Scene Management</button>
+  <button class="tablinks" onclick="openTab(event, 'Build')">Build Options</button>
+  <button class="tablinks" onclick="openTab(event, 'Lighting')">Lighting</button>
+  <button class="tablinks" onclick="openTab(event, 'Nav')">Navigation</button>
+  <button class="tablinks" onclick="openTab(event, 'Scripts')">Scripting</button>
+  <button class="tablinks" onclick="openTab(event, 'Effects')">Effects</button>
+  <button class="tablinks" onclick="openTab(event, 'Controls')">Controls</button>
+  <button class="tablinks" onclick="openTab(event, 'Web')">Web Calls</button>
+  <button class="tablinks" onclick="openTab(event, 'Tips')">Tips &amp; Tricks</button>
+  <button class="tablinks" onclick="openTab(event, 'VR')">Virtual Reality</button>
+  <button class="tablinks" onclick="openTab(event, 'Advanced')">Advanced</button>
+</div>
+
+
+<div id="Editor" class="tabcontent">
+  <h2>The Editor</h2>
         <p>Here you can find information regarding the Unity editor and its layout. Every tab is draggable and rearangable, so you can design the editor to your liking. The Unity Editor is fully extendible, and someday you might even build your very own editor scripts!</p>
-        
+	<div class="htab">
+	  <button class="htablinks" onclick="openHTab(event, 'SceneView')">Scene View</button>
+	  <button class="htablinks" onclick="openHTab(event, 'GView')">Game View</button>
+	  <button class="htablinks" onclick="openHTab(event, 'HWindow')">Hierarchy Window</button>
+	  <button class="htablinks" onclick="openHTab(event, 'PWindow')">Project Window</button>
+	  <button class="htablinks" onclick="openHTab(event, 'IWindow')">Inspector</button>
+	  <button class="htablinks" onclick="openHTab(event, 'DConsole')">Debug Console</button>
+	  <button class="htablinks" onclick="openHTab(event, 'Tags')">Tags &amp; Layers</button>
+	  <button class="htablinks" onclick="openHTab(event, 'CBased')">Component Based Programming</button>
+	</div>        
+	<div id="SceneView" class="htabcontent">
         <h3> The Scene View</h3>
         <p> The scene view is the main view for developming within Unity. Every object you create is visible in the scene view. Using the moving tools you can position, rotate and scale the selected objects.Using the mouse you can rotate and reposition the camera, allowing you to get a clear view of everything that is happening in you scene!</p>
         <center><img src="Images/SceneView.png"/></center>
+        </div>
+	<div id="GView" class="htabcontent">
         
         <h3> The Game View</h3>
         <p> The game view actually shows how the game will show during run time. The game you are creating is fully playable and observable in the game view. That means you can quickly test your changes just by pressing the Play button.</p>
         <center><img src="Images/GameView.png"/></center>
-        
+        </div>
+	<div id="HWindow" class="htabcontent">
         <h3> The Hierarchy Window</h3>
         <p> In the Hierarchy window you can find a list of all the current objects in your scene. You can use this window to quickly search and find a certain object. Furthermore this functions alot like a file explorer. You can drag and drop objects under other objects in order to parent them. Parented objects inherit the position, scale and rotation of the parent. This window is also the place where you can delete unwanted objects or create new ones. </p>
         <center><img src="Images/hierarchyWindow.png"/></center>
         <center><video width="640" height="480" controls autoplay>
             <source = src="Videos/hierarchyParent.mp4" type = "video/mp4">
         </video></center>
+        </div>
         
+	<div id="PWindow" class="htabcontent">
         <h3> The Project Window</h3>
         <p> The project window shows everything that is within your Assets folder. It's completely identical to the structure you see within the file explorer. Everything you change within the file explorer will be reflected in the project window and vice-versa. Try to keep your assets organized, since you will be needing them to create your game, and finding them quickly is essential. </p>
         <center><img src="Images/projectWindow.png"/></center>
-        
+        </div>
+	<div id="IWindow" class="htabcontent">
         <h3> The Inspector Window </h3>
         <p> In the Inspector window you can view and modify the components of the selected game objects. If the objects share the same components, you can edit the values of the components simultaneously. You can drag and drop scripts in the Inspector to add them to the selected game objects. You can also press the add component button and select the component you need. All object modification happens here in the inspector window. You can change the name, tag, layer, position, rotation, scale, material etc. of the object.</p>
         <center><img src="Images/inspectorWindow.png"/></center>
-        
+        </div>
+	<div id="DConsole" class="htabcontent">
         <h3> The debugging console </h3>
         <p> The console window is the output window. Errors, exceptions, warnings and logs are shown here during runtime. Double click the message and the IDE of your choosing will open up and jump to the line that produced the message. You can log messages using the following code:</p>
         <pre><code class ="cs">
@@ -65,7 +84,8 @@
             print("the name of this gameObject is: " + gameObject.name);
         </code></pre>
         <center><img src="Images/ConsoleWindow.png"/></center>
-        
+        </div>
+	<div id="Tags" class="htabcontent">
         <h3> Tags and Layers</h3>
         <p> Tags and Layers allow us to define some common functionality across unrelated game objects. For example some physics operations can ignore objects in certain layers. Or some triggers will react only to objects with a certain tag. Using this you can easily group objects wich should react in a similar way to certain actions. To define new tags and layers you click on an object and in the Inspector you click on the drop down menu. </p>
         <center><img src="Images/TagLayer.png"/></center>
@@ -73,8 +93,15 @@
         <center><video width="640" height="480" controls autoplay>
             <source = src="Videos/taglayerset.mp4" type = "video/mp4">
         </video></center>
-        
-        <h2> Component based programming</h2>
+        </div>
+</div>
+<div id="Components" class="tabcontent">
+  <h2>Component based programming</h2>
         <p> While it is possible to do OOP within Unity, you will notice that many programmers choose for a more component based way of doing stuff. That is because Unity makes it very easy to quickly  </p>
-    </div>
+	<div class="htab">
+	  <button class="htablinks" onclick="openHTab(event, 'Etab')">Example Tab</button>
+	</div>
+	  <div id="Etab" class="htabcontent">
+        Content
+        </div>
 </div>
