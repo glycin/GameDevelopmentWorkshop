@@ -1,0 +1,334 @@
+<link rel="stylesheet" href="Highlightjs/styles/vs2015.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="Highlightjs/highlight.pack.js"></script>
+<script src="tabs.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div class ="container">
+    <h1> Game Development Workshop </h1>
+</div>
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Editor')">The Editor</button>
+  <button class="tablinks" onclick="openTab(event, 'Components')">Components</button>
+  <button class="tablinks" onclick="openTab(event, 'UI')">UI</button>
+  <button class="tablinks" onclick="openTab(event, 'Physics')">Physics</button>
+  <button class="tablinks" onclick="openTab(event, 'Materials')">Materials</button>
+  <button class="tablinks" onclick="openTab(event, 'Objects')">Manipulating Objects</button>
+  <button class="tablinks" onclick="openTab(event, 'Coupling')">Script Coupling</button>
+  <button class="tablinks" onclick="openTab(event, 'Animations')">Animations</button>
+  <button class="tablinks" onclick="openTab(event, 'Audio')">Audio</button>
+  <button class="tablinks" onclick="openTab(event, 'Scenes')">Scene Management</button>
+  <button class="tablinks" onclick="openTab(event, 'Build')">Build Options</button>
+  <button class="tablinks" onclick="openTab(event, 'Lighting')">Lighting</button>
+  <button class="tablinks" onclick="openTab(event, 'Nav')">Navigation</button>
+  <button class="tablinks" onclick="openTab(event, 'Scripts')">Scripting</button>
+  <button class="tablinks" onclick="openTab(event, 'Effects')">Effects</button>
+  <button class="tablinks" onclick="openTab(event, 'Controls')">Controls</button>
+  <button class="tablinks" onclick="openTab(event, 'Web')">Web Calls</button>
+  <button class="tablinks" onclick="openTab(event, 'Tips')">Tips &amp; Tricks</button>
+  <button class="tablinks" onclick="openTab(event, 'VR')">Virtual Reality</button>
+  <button class="tablinks" onclick="openTab(event, 'Advanced')">Advanced</button>
+</div>
+<!-- USER INTERFACE -->
+<div id="UI" class="tabcontent">
+	<h2>User Interface</h2>
+	<p>There are ...</p>
+	<div class="htab">
+		<button class="htablinks" onclick="openHTab(event, 'Canvas')">Canvas</button>
+    <button class="htablinks" onclick="openHTab(event, 'RectTransform')">Rect Transform</button>
+    <button class="htablinks" onclick="openHTab(event, 'Panel')">Panel</button>
+    <button class="htablinks" onclick="openHTab(event, 'Text')">Text</button>
+    <button class="htablinks" onclick="openHTab(event, 'Image')">Image</button>
+    <button class="htablinks" onclick="openHTab(event, 'Mask')">Mask</button>
+		<button class="htablinks" onclick="openHTab(event, 'OnScreen')">On Screen</button>
+    <button class="htablinks" onclick="openHTab(event, 'World')">In World</button>
+	</div>
+	<div id="Canvas" class="htabcontent">
+        <h3>Canvas</h3>
+		Content
+	</div>
+  <div id="RectTransform" class="htabcontent">
+        <h3>Rect Transform</h3>
+    Content
+  </div>
+  <div id="Panel" class="htabcontent">
+        <h3>Panel</h3>
+    Content
+  </div>
+  <div id="Text" class="htabcontent">
+        <h3>Text</h3>
+    Content
+  </div>
+  <div id="Image" class="htabcontent">
+        <h3>Image</h3>
+    Content
+  </div>
+  <div id="Mask" class="htabcontent">
+        <h3>Mask</h3>
+    Content
+  </div>
+	<div id="OnScreen" class="htabcontent">
+        <h3>UI on Screen</h3>
+		Content
+	</div>
+	<div id="World" class="htabcontent">
+        <h3>UI in World</h3>
+		Content
+	</div>
+</div>
+<!-- PHYSICS -->
+<div id="Physics" class="tabcontent">
+  <h2>Physics</h2>
+  <p>If enabled, per object, physics control the interaction between objects via movement and collision.</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'Rigidbody')">Rigidbody</button>
+    <button class="htablinks" onclick="openHTab(event, 'Colliders')">Colliders</button>
+    <button class="htablinks" onclick="openHTab(event, 'PhysicsMaterials')">Physics Materials</button>
+    <button class="htablinks" onclick="openHTab(event, 'Triggers')">Triggers</button>
+    <button class="htablinks" onclick="openHTab(event, 'PhysicsScript')">Scripts</button>
+  </div>
+  <div id="Rigidbody" class="htabcontent">
+        <h3>Rigidbody</h3>
+    <p>The main way to add physics to an object is by adding a <a href="https://docs.unity3d.com/ScriptReference/Rigidbody.html">Rigidbody</a> component to it.<br><br>
+    By default, gravity will act upon the object, making it start falling (and rotating).<br>
+    It is possible to disable all imposed movement by ticking "Is Kinematic" on the rigidbody. 
+    </p>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/rigidbody.mp4" type = "video/mp4">
+        </video></center>
+  </div>
+  <div id="Colliders" class="htabcontent">
+        <h3>Colliders</h3>
+    Colliders represent the physical space that an object occupies. <br><br>
+    It does not necessarily align with the graphical representation of that model, nor does it require that the model must have a renderer.<br>
+    An object can have multiple collider components. 
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/collider.mp4" type = "video/mp4">
+        </video></center>
+  </div>
+  <div id="PhysicsMaterials" class="htabcontent">
+        <h3>Physics Materials</h3>
+        Physics materials are part of colliders and control how physics objects interact when in contact with other colliders.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/physicsMaterial.mp4" type = "video/mp4">
+        </video></center>
+    Content
+  </div>
+  <div id="Triggers" class="htabcontent">
+        <h3>Triggers</h3>
+        When "Is Trigger" is checked in a collider component, it will still send collision messages, but it will not collider with other objects.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/triggerCollider.mp4" type = "video/mp4">
+        </video></center>
+    Content
+  </div>
+  <div id="PhysicsScript" class="htabcontent">
+        <h3>Physics in scripts</h3>
+    Without a rigidbody, collision messages are not sent to objects. At least one of the two colliding objects must have a rigidbody.<br><br>
+    The following example shows how to react to certain types of collisions.
+    <pre><code class ="cs">
+    // When a collision happens
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.name == "Ball") {
+            GetComponent<Renderer>().material.color = Color.red;
+        } else {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+    }
+
+    // While touching a trigger collider
+    private void OnTriggerStay(Collider other) {
+        GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    // When stopped touching a trigger collider
+    private void OnTriggerExit(Collider other) {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+        </code></pre>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="Videos/collisionScript.mp4" type = "video/mp4">
+        </video></center>
+  </div>
+</div>
+<!-- SCRIPT COUPLING -->
+<div id="Coupling" class="tabcontent">
+  <h2>Coupling Scripts</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'CouplingGetComponent')">Get Component</button>
+    <button class="htablinks" onclick="openHTab(event, 'CouplingRef')">Reference</button>
+    <button class="htablinks" onclick="openHTab(event, 'CouplingFind')">Find</button>
+    <button class="htablinks" onclick="openHTab(event, 'CouplingSingleton')">Singletons</button>
+    <button class="htablinks" onclick="openHTab(event, 'CouplingEvents')">Events</button>
+  </div>
+  <div id="CouplingGetComponent" class="htabcontent">
+        <h3>CouplingGetComponent</h3>
+    Content
+  </div>
+  <div id="CouplingRef" class="htabcontent">
+        <h3>CouplingRef</h3>
+    Content
+  </div>
+  <div id="CouplingFind" class="htabcontent">
+        <h3>CouplingFind</h3>
+    Content
+  </div>
+  <div id="CouplingSingleton" class="htabcontent">
+        <h3>CouplingSingleton</h3>
+    Content
+  </div>
+  <div id="CouplingEvents" class="htabcontent">
+        <h3>CouplingEvents</h3>
+    Content
+  </div>
+</div>
+<!-- AUDIO -->
+<div id="Audio" class="tabcontent">
+  <h2>Audio</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'AudioListener')">Listener</button>
+    <button class="htablinks" onclick="openHTab(event, 'AudioSource')">Source</button>
+    <button class="htablinks" onclick="openHTab(event, 'AudioMixer')">Mixer</button>
+  </div>
+  <div id="AudioListener" class="htabcontent">
+        <h3>AudioListener</h3>
+    Content
+  </div>
+  <div id="AudioSource" class="htabcontent">
+        <h3>AudioSource</h3>
+    Content
+  </div>
+  <div id="AudioMixer" class="htabcontent">
+        <h3>AudioMixer</h3>
+    Content
+  </div>
+</div>
+<!-- SCENE MANAGEMENT -->
+<div id="Scenes" class="tabcontent">
+  <h2>Scene Management</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'SceneBuild')">Build Scene</button>
+    <button class="htablinks" onclick="openHTab(event, 'SceneLoad')">Load Scene</button>
+    <button class="htablinks" onclick="openHTab(event, 'SceneQuit')">Quit Application</button>
+    <button class="htablinks" onclick="openHTab(event, 'SceneLoadAdditive')">Load Scene Additive</button>
+  </div>
+  <div id="SceneBuild" class="htabcontent">
+        <h3>SceneBuild</h3>
+    Content
+  </div>
+  <div id="SceneLoad" class="htabcontent">
+        <h3>SceneLoad</h3>
+    Content
+  </div>
+  <div id="SceneQuit" class="htabcontent">
+        <h3>SceneQuit</h3>
+    Content
+  </div>
+  <div id="SceneLoadAdditive" class="htabcontent">
+        <h3>SceneLoadAdditive</h3>
+    Content
+  </div>
+</div>
+<!-- NAV -->
+<div id="Nav" class="tabcontent">
+  <h2>Navigation AI</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'NavWindow')">Navigation Window</button>
+    <button class="htablinks" onclick="openHTab(event, 'NavAgent')">AI Agent</button>
+    <button class="htablinks" onclick="openHTab(event, 'NavObstable')">Obstacles</button>
+    <button class="htablinks" onclick="openHTab(event, 'NavBuild')">Build</button>
+    <button class="htablinks" onclick="openHTab(event, 'NavScript')">Scripts</button>
+  </div>
+  <div id="NavWindow" class="htabcontent">
+        <h3>NavWindow</h3>
+    Content
+  </div>
+  <div id="NavAgent" class="htabcontent">
+        <h3>NavAgent</h3>
+    Content
+  </div>
+  <div id="NavObstable" class="htabcontent">
+        <h3>NavObstable</h3>
+    Content
+  </div>
+  <div id="NavBuild" class="htabcontent">
+        <h3>NavBuild</h3>
+    Content
+  </div>
+  <div id="NavScript" class="htabcontent">
+        <h3>NavScript</h3>
+    Content
+  </div>
+</div>
+<!-- Effects -->
+<div id="Effects" class="tabcontent">
+  <h2>Visual Effects</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'EffectsParticles')">ParticleSystems</button>
+    <button class="htablinks" onclick="openHTab(event, 'EffectsAnimations')">Animations</button>
+    <button class="htablinks" onclick="openHTab(event, 'EffectsShaders')">Shaders</button>
+  </div>
+  <div id="EffectsParticles" class="htabcontent">
+        <h3>EffectsParticles</h3>
+    Content
+  </div>
+  <div id="EffectsAnimations" class="htabcontent">
+        <h3>EffectsAnimations</h3>
+    Content
+  </div>
+  <div id="EffectsShaders" class="htabcontent">
+        <h3>EffectsShaders</h3>
+    Content
+  </div>
+</div>
+<!-- Controls -->
+<div id="Controls" class="tabcontent">
+  <h2>Controls</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'ControlsInput')">Input</button>
+    <button class="htablinks" onclick="openHTab(event, 'ControlsCamera')">Camera</button>
+    <button class="htablinks" onclick="openHTab(event, 'ControlsMovement')">Movement</button>
+  </div>
+  <div id="ControlsInput" class="htabcontent">
+        <h3>ControlsInput</h3>
+    Content
+  </div>
+  <div id="ControlsCamera" class="htabcontent">
+        <h3>ControlsCamera</h3>
+    Content
+  </div>
+  <div id="ControlsMovement" class="htabcontent">
+        <h3>ControlsMovement</h3>
+    Content
+  </div>
+</div>
+<!-- Tips -->
+<div id="Tips" class="tabcontent">
+  <h2>Tips &amp; Tricks</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'TipsDummy')">Dummy Objects</button>
+  </div>
+  <div id="TipsDummy" class="htabcontent">
+        <h3>TipsDummy</h3>
+    Content
+  </div>
+</div>
+<!-- Advanced -->
+<div id="Advanced" class="tabcontent">
+  <h2>Tips &amp; Tricks</h2>
+  <p>There are ...</p>
+  <div class="htab">
+    <button class="htablinks" onclick="openHTab(event, 'AdvancedExample')">Example</button>
+  </div>
+  <div id="AdvancedExample" class="htabcontent">
+        <h3>AdvancedExample</h3>
+    Content
+  </div>
+</div>
