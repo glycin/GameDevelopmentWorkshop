@@ -1,32 +1,33 @@
-<html lang="en" >
-    <head>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
-        <link rel="stylesheet" href="css/main-css.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-        <script src="js/controllers/WorkshopController.js"></script>
-    </head>
-    <body ng-app="GameDevWorkshop" ng-controller="workshopController" layout="column" ng-cloak>
-        <md-toolbar>
-            <h3> {{header}}</h3>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="css/main-css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="js/controllers/WorkshopController.js"></script>
+
+</head>
+<body ng-app="GameDevWorkshop" ng-controller="workshopController" layout="column" ng-cloak>
+    <md-toolbar>
+            <h3 class="md-toolbar-tools"> {{header}}</h3>
         </md-toolbar>
-        <md-content flex layout="row">
+    <md-content flex layout="row">
             <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
                <md-list>
                     <md-list-item ng-repeat="chapter in chapters">
-                            <md-button> {{chapter}} </md-button>
+                            <md-button class ="btn1" ng-click="loadPage(chapter.id)"> {{chapter.name}} </md-button>
                        <md-divider></md-divider>
                     </md-list-item>
                 </md-list>
             </md-sidenav>
-            <md-content flex layout="row">
-                <ng-view>
-                    View Content
+            <md-content flex>
+                <ng-view flex layout="row">
+                    <div ng-include="template.url"></div>
                 </ng-view>
             </md-content>
-        </md-content>
-    </body>
+    </md-content>
+</body>
 </html>

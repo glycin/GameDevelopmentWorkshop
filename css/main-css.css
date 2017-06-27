@@ -9,3 +9,16 @@ md-content {
   height:100%;
   padding:20px;
 }
+
+.btn1 {
+	padding: 0 100px 0 0;
+	margin: 0 0 0 0;
+}
+
+md-sidenav, 
+md-sidenav.md-locked-open, 
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 200px !important;
+    width: 13vw !important;
+    max-width: 400px !important;
+}
