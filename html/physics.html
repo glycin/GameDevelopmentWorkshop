@@ -1,0 +1,78 @@
+<html lang="en">
+<md-tabs md-dynamic-height md-border-bottom>
+<h1>Physics</h1>
+  <p>If enabled, per object, physics control the interaction between objects via movement and collision.</p>
+          <md-tab label="Rigidbody">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Rigidbody</h1>
+                <p>The main way to add physics to an object is by adding a <a href="https://docs.unity3d.com/ScriptReference/Rigidbody.html">Rigidbody</a> component to it.<br><br>
+    By default, gravity will act upon the object, making it start falling (and rotating).<br>
+    It is possible to disable all imposed movement by ticking "Is Kinematic" on the rigidbody. 
+    </p>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="../Videos/rigidbody.mp4" type = "video/mp4">
+        </video></center>
+            </md-content>
+          </md-tab>
+          <md-tab label="Colliders">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Colliders</h1>
+                Colliders represent the physical space that an object occupies. <br><br>
+    It does not necessarily align with the graphical representation of that model, nor does it require that the model must have a renderer.<br>
+    An object can have multiple collider components. 
+    <center><video width="100%" controls autoplay loop>
+            <source = src="../Videos/collider.mp4" type = "video/mp4">
+        </video></center>
+            </md-content>
+          </md-tab>
+          <md-tab label="Physics Materials">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Physics Materials</h1>
+                Physics materials are part of colliders and control how physics objects interact when in contact with other colliders.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="../Videos/physicsMaterial.mp4" type = "video/mp4">
+        </video></center>
+                </div>
+            </md-content>
+          </md-tab>
+            <md-tab label="Triggers">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Triggers</h1>
+                When "Is Trigger" is checked in a collider component, it will still send collision messages, but it will not collider with other objects.<br><br>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="../Videos/triggerCollider.mp4" type = "video/mp4">
+        </video></center>
+            </md-content>
+          </md-tab>
+            <md-tab label="PhysicsScript">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Physics in scripts</h1>
+                Without a rigidbody, collision messages are not sent to objects. At least one of the two colliding objects must have a rigidbody.<br><br>
+    The following example shows how to react to certain types of collisions.
+    <pre><code class ="cs">
+    // When a collision happens
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.name == "Ball") {
+            GetComponent<Renderer>().material.color = Color.red;
+        } else {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+    }
+
+    // While touching a trigger collider
+    private void OnTriggerStay(Collider other) {
+        GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    // When stopped touching a trigger collider
+    private void OnTriggerExit(Collider other) {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+        </code></pre>
+    <center><video width="100%" controls autoplay loop>
+            <source = src="../Videos/collisionScript.mp4" type = "video/mp4">
+        </video></center>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+</html>
