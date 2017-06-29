@@ -1,0 +1,67 @@
+<html lang="en">
+<md-tabs md-dynamic-height md-border-bottom>
+          <md-tab label="Introduction">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Introduction</h1>
+                <p> When you create a standard cube or sphere in Unity, it will have a standard grey color. That is because of the material attached to the 3D mesh. Materials define how a surface should be rendered within the 3D world. To create awesome scenes like the one below, you will need to make good use of materials, textures and shaders.   </p>
+                <center><img src="../Images/speedtree.jpg"/></center>
+            </md-content>
+          </md-tab>
+          <md-tab label="Materials">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Materials</h1>
+                <p> Materials are definitions of how a surface should be rendered, including references to textures used, tiling information, colour tints and more. The available options for a material depend on which shader the material is using.</p>
+                <p>A material specifies one specific shader to use, and the shader used determines which options are available in the material. A shader specifies one or more textures variables that it expects to use, and the Material Inspector in Unity allows you to assign your own texture assets to these these texture variables.</p>
+                <p>For most normal rendering - by which we mean characters, scenery, environments, solid and transparent objects, hard and soft surfaces etc., the Standard Shader is usually the best choice. This is a highly customisable shader which is capable of rendering many types of surface in a highly realistic way.</p>
+                <p> The default material is read only, meaning you can't change its texture, color or tints. To create your own material, right click in the project view, and choose "Material".</p>
+                <center><video width="640" height="480" controls autoplay>
+                    <source = src="../Videos/newMaterial.mp4" type = "video/mp4">
+                </video></center>
+                <p> Having your own material, just assign it to the renderer component of your game object. Now you can change its properties! Keep in mind, when you modify a material every object using that material will change. </p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Textures">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Textures</h1>
+                <p> Normally, the mesh geometry of an object only gives a rough approximation of the shape while most of the fine detail is supplied by Textures. A texture is just a standard bitmap image that is applied over the mesh surface. You can think of a texture image as though it were printed on a rubber sheet that is stretched and pinned onto the mesh at appropriate positions. The positioning of the texture is done with the 3D modelling software that is used to create the mesh.</p>
+                <p> You can import pretty much every normal image file into unity to use as a texture. To import a img file, just drag and drop it in the project view, or paste it from in the file explorer. A texture typically looks like this:</p>
+                <center><img src="../Images/grass.png" width="640" height="480"/></center>
+                <p> You can google around for some standard textures, but keep in mind, games have complete texturing departments and artists in order to create the best looking look and feel, so dont be dissapointed if your game doesn't look like Crysis or Diablo III!</p>
+                <p> To assign a texture to a material, just go to the material in the inspector, and then the little circle between the empty square and "Albedo". A pop up will appear where you can choose your texture. You can also drag the desired texture from the project window into the empty square, which will automatically assign it.</p>
+                <center><img src="../Images/chooseTexture.PNG"/></center>
+                <p> As you can see, the standard shader has multiple texture slots. These are used to truly make the texture look awesome (for example like it has depth or a glance). We wont dive deeper into these for now.  More simple shaders have less slots, as seen in the example below. This is a so called "Unlit" shader, which doesn't take shadows or lighting into consideration. All it does is display the you assign. This means it's very cheap with almost no performance drawback, while the standard shader, while better looking, has a bigger performance footprint.</p>
+                <center><img src="../Images/simpleShader.PNG"/></center>
+            </md-content>
+          </md-tab>
+            <md-tab label="Shaders">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Shaders</h1>
+                <p> Shaders are small scripts that contain the mathematical calculations and algorithms for calculating the colour of each pixel rendered, based on the lighting input and the Material configuration. Shaders are very complex, and many developers stick to the Unity standard shaders which can be seen once you click the drop down menu next to "Shader" in the material inspector.</p>
+                <center><img src="../Images/shaderDropDown.PNG"/></center>
+                <p>For this workshop we advise sticking to the standard shaders, but if you are reeeeallllllyyyyyy itching to write your own, you can find more info about shader lab here: <a href="https://docs.unity3d.com/Manual/ShaderTut1.html">Shaderlab tutorial</a></p>
+            </md-content>
+          </md-tab>
+            <md-tab label="Material & Texture scripting">
+            <md-content class="md-padding">
+              <h1 class="md-display-1"> Accessing and modifying Materials and Textures through scripts</h1>
+                <p> Of course you can modify the materials and textures of a game object through scripts! To do that, open a script get the renderer component and start modifying the material component! </p>
+                <pre><code>
+                    public Texture grassTexture;
+                    public Material grassMaterial;
+
+                    void Start()
+                    {
+                        // Here we set the material and texure to the referenced grass texture and material.
+                        Renderer renderer = GetComponent&lt;Renderer&gt;();
+                        renderer.material = grassMaterial;
+                        renderer.material.mainTexture = grassTexture;
+
+                        // And now we change some values
+                        renderer.material.color = Color.blue; // This changes the color of the material
+                        renderer.material.mainTextureScale = new Vector2(5f, 5f); // This changes the tiling of the texture
+                        renderer.material.mainTexture.wrapMode = TextureWrapMode.Repeat; // Sets the wrapmode of the texture. You can either Tile the texture (Repeat) or map a single texture on the object (Clamp)
+                    }</code></pre>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+</html>
