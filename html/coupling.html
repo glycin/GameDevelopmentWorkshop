@@ -150,6 +150,7 @@ Of course, this doesn't ensure that only one GameHandler object can exist, as th
         currentExperience += Mathf.Max(amount,0);
         if(currentExperience > 1000) {
             level++;
+            currentExperience = 0;
             Events.Instance.Trigger&lt;LevelUp&gt;(level);
         }
     }
