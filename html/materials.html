@@ -1,5 +1,5 @@
 <html lang="en">
-<md-tabs md-dynamic-height md-border-bottom>
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
           <md-tab label="Introduction">
             <md-content class="md-padding">
               <h1 class="md-display-1">Introduction</h1>
@@ -14,7 +14,7 @@
                 <p>A material specifies one specific shader to use, and the shader used determines which options are available in the material. A shader specifies one or more textures variables that it expects to use, and the Material Inspector in Unity allows you to assign your own texture assets to these these texture variables.</p>
                 <p>For most normal rendering - by which we mean characters, scenery, environments, solid and transparent objects, hard and soft surfaces etc., the Standard Shader is usually the best choice. This is a highly customisable shader which is capable of rendering many types of surface in a highly realistic way.</p>
                 <p> The default material is read only, meaning you can't change its texture, color or tints. To create your own material, right click in the project view, and choose "Material".</p>
-                <center><video width="640" height="480" controls autoplay>
+                <center><video width="640" height="480" controls autoplay loop>
                     <source = src="../Videos/newMaterial.mp4" type = "video/mp4">
                 </video></center>
                 <p> Having your own material, just assign it to the renderer component of your game object. Now you can change its properties! Keep in mind, when you modify a material every object using that material will change. </p>

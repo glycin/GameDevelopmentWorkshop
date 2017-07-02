@@ -39,7 +39,15 @@ angular.module('GameDevWorkshop', ['ngMaterial']).controller('workshopController
         { name: 'animations', url : 'html/animations.html'},
         { name: 'sounds', url : 'html/sounds.html'},
         { name: 'scenes', url : 'html/scenes.html'},
-        { name: 'building', url : 'html/building.html'}
+        { name: 'building', url : 'html/building.html'},
+        { name: 'lighting', url : 'html/lights.html'},
+        { name: 'navigation', url : 'html/navigation.html'},
+        { name: 'scripts', url : 'html/scripting.html'},
+        { name: 'effects', url : 'html/effects.html'},
+        { name: 'controls', url : 'html/controls.html'},
+        { name: 'web', url : 'html/web.html'},
+        { name: 'tipstricks', url : 'html/tipstricks.html'},
+        { name: 'vr', url : 'html/vr.html'}
     ];
     $scope.template = $scope.templates[0];
     

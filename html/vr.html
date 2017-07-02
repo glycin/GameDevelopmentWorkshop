@@ -1,0 +1,36 @@
+<html lang="en">
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+        <md-tab label="Virtual Reality">
+            <md-content class="md-padding">
+                <h1 class="md-display-1">Virtual Reality</h1>
+                <p> Since version 5.5 Unity officially support Virtual Reality, out of the box. That means that all SDK are installed out of the box. The following devices are supported</p>
+                <ul>
+                    <li> HTC VIVE</li>
+                    <li> Oculus Rift</li>
+                    <li> Google Cardboard</li>
+                    <li> Google Daydread</li>
+                    <li> Microsoft Hololens</li>
+                </ul>
+                <p> Enabling VR is actually very easy. You go to the player settings (Edit > Project settings > Player settings) and other "Other settings" search for the "Virtual Reality Supported" check box. Check it and you have enabled VR! Now you need to choose the SDK's you need. You can do that by pressing the "+" icon under the checkbox. Keep in mind, you will only see the SDKs currently supported by your selected platform. You won't notice any difference in Unity, but once you build, the game will be VR enabled.</p>
+                <center><img src="../Images/vr.PNG"/></center>
+            </md-content>
+        </md-tab>
+        <md-tab label="VR Interaction">
+            <md-content class="md-padding">
+                <h1 class="md-display-1">VR Interaction</h1>
+                <p> Building a VR game isn't actually all that different that a normal game. Once you have enabled VR, your main camera becomes the "head". If you want objects to follow the head, just child them under the camera. All other logic should work the same. Furthermore UI's only work if they are set to "world space". Then the user can interact with them.</p>
+            </md-content>
+        </md-tab>
+        <md-tab label="VR Scripting">
+            <md-content class="md-padding">
+                <h1 class="md-display-1">VR Scripting</h1>
+                <p> We won't dive too much into this, since it's very broad. But we will give you some pointers to get you started. All VR related classes are found in the <b>UnityEngine.VR</b> namespace.</p>
+                <p> Here you can find classes related to Input tracking etc. <a href="https://docs.unity3d.com/ScriptReference/VR.InputTracking.html"> (Script Reference)</a></p>
+                <p> Hololens classes can be found under <b>UnityEngine.VR.WSA</b>. There you can find classes that hold the delegate events for holographic input.</p>
+                <p> If you really want to do VR during this workshop, you can find some pointers here:
+                    <a href="https://unity3d.com/learn/tutorials/topics/virtual-reality"> VR Tutorial</a>
+                </p>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</html>
