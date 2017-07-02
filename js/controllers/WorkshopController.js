@@ -33,7 +33,12 @@ angular.module('GameDevWorkshop', ['ngMaterial']).controller('workshopController
         { name: 'components', url: 'html/components.html' },
         { name: 'ui', url: 'html/ui.html' },
         { name: 'physics', url : 'html/physics.html'},
-        { name: 'materials', url : 'html/materials.html'}
+        { name: 'materials', url : 'html/materials.html'},
+        { name: 'objects', url : 'html/objects.html'},
+        { name: 'coupling', url : 'html/coupling.html'},
+        { name: 'animations', url : 'html/animations.html'},
+        { name: 'sounds', url : 'html/sounds.html'},
+        { name: 'scenes', url : 'html/scenes.html'}
     ];
     $scope.template = $scope.templates[0];
     

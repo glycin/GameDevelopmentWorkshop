@@ -22,7 +22,7 @@
             <md-content class="md-padding">
               <h1 class="md-display-1">Creating custom components</h1>
                 <p> Of course Unity would be a lousy engine if you couldn't create your own components! We do that by creating scripts. The scripts contain the unique logic that you want for your new component. To create a new script right click in the project window, Create > C# script (or JS script, but we wont be covering that today).</p>
-                <center><video width="640" height="480" controls autoplay>
+                <center><video width="640" height="480" controls autoplay loop>
                     <source = src="../Videos/createScript.mp4" type = "video/mp4">
                 </video></center>
                 <p> We will dive into the wonderfull world of scripting later in the workshop, or if you are impatient you can go to the "Scripting" chapter. What you do need to know now, is that if you define a variable as public, you can change its value directly in the inspector! If you open the script you just created and add a value like this: </p>
@@ -43,7 +43,7 @@
               <h1 class="md-display-1">Creating prefabs</h1>
                 <p> It is convenient to build a GameObject in the scene by adding components and setting their properties to the appropriate values. This can create problems, however, when you have an object like an NPC, prop or piece of scenery that is reused in the scene several times. Simply copying the object will certainly produce duplicates but they will all be independently editable. Generally, you want all instances of a particular object to have the same properties, so when you edit one object in the scene, you would prefer not to have to make the same edit repeatedly to all the copies. 
                     Fortunately, Unity has a Prefab asset type that allows you to store a GameObject object complete with components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.</p>
-                 <center><video width="640" height="480" controls autoplay>
+                 <center><video width="640" height="480" controls autoplay loop>
                     <source = src="../Videos/prefab.mp4" type = "video/mp4">
                 </video></center>
                 <p>The inspector for a prefab instance has three buttons not present for a normal object: Select, Revert and Apply. 
