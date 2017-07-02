@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="../Highlightjs/styles/vs2015.css">
+<script src="../Highlightjs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<html lang="en">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <h1>Special Effects</h1>
+        <p>Is your game boring? Add explosions.<br>Effects in games are like the ones in cinematography. You aim to create something visually appealing, that complements the content of your game.</p>
+        <md-tab label="Particle Systems">
+            <md-content class="md-padding">
+                <h1 class="md-display-1">Particle Systems</h1>
+                <p>The most commonly used technique to create a visual effect is a <a href="https://docs.unity3d.com/ScriptReference/ParticleSystem.html">particle system</a>.<br>A particle system is essentially a way to mass manipulate tiny objects (particles) that together form a nice visual. Each particle is given a material, which can be a custom texture.<br>Visual artists also combine multiple particle systems for a single effect. For example, smoke in an explosion is a separate particle system.<center><div><img src="../Images/particleSystem.png"/></div><br>Particle system component</center><br>
+                <h3>Example</h3>
+                Let's make it snow! Since snow is one of the easiest and most intuitive effects to create, we will start with this.
+                <center><video width="100%" controls autoplay loop>
+            		<source = src="../Videos/snow.mp4" type = "video/mp4">
+        		</video></center><br>
+        		In a step by step solution:
+        		<ol>
+        		<li>Create a new particle system (right click in Hierarchy -> Particle System)</li>
+        		<li>Set the Transform rotation of your object to 0,0,0. By default particle systems are rotated.</li>
+        		<li>Set lifetime to 10. This will make the snow "curtain" longer, since particles will live longer.</li>
+        		<li>Set start speed to 0. We don't want our snow particles to have initial speed.</li>
+        		<li>Set start size to random between two constants (0.1 and 0.5). This will make the particles have some variety.</li>
+        		<li>Set gravity modifier to 0.05. This will make the particles fall slowly.</li>
+        		<li>Under Shape, set Shape to Box (10, 0.1,10). This controls where the particles spawn.</li>
+        		<li>Under Emission, set Rate Over Time to 50. Snow will now be more dense.</li>
+        		</ol>
+        		To improve the look and feel of this effect, we can also make our particles gradually fade out instead of disappearing, and change their texture to snow flakes! You can do this via Color over Lifetime and Renderer.<br>
+        		<center><video width="100%" controls autoplay loop>
+            		<source = src="../Videos/snow2.mp4" type = "video/mp4">
+        		</video></center>
+                </p>
+            </md-content>
+        </md-tab>
+        <md-tab label="Other Techniques">
+            <md-content class="md-padding">
+                <h1 class="md-display-1">Other Techniques</h1>
+                <p>A number of techniques can be deployed to create a nice visual effect.<br>
+                Just like coding, there are patterns, but it is really up to the developer to choose how they will implement it.<br>
+                Common used techniques are:
+                <ul>
+                <li>Shaders: Animated shaders can already be enough for certain effects. While they can be very impressive, they are also very difficult to make.</li>
+                <li>Lighting: What's lightning without a flash?</li>
+                <li>Animations: Animations can be an easy way to control the position and rotation of objects during an effect.</li>
+                <li>Sprites: Using sprites (animated or not) instead of particles allows for more complicated effects.</li>
+                <li>Scripts: Scripts can control the timing of the different components of an effect. They can also make it easier to create dynamic effects based on the game context.</li>
+                <li>Camera positioning: Shaking the camera during a powerful visual will instantly improve the quality of that visual a lot. Another option is viewing an effect under a certain angle, or panning while the effect plays.</li>
+                <li>Sound: No matter how impressive a visual effect might look, it requires a matching sound effect to go with it. Sound is very often unappreciated by developers.</li>
+                </ul>
+                Deploying a combination of those techniques in a nice compilation will make for a nice, professional visual effect.
+                </p>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</html>
