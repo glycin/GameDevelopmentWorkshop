@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
   <md-tab label="Introduction">
     <md-content class="md-padding">
@@ -49,7 +44,7 @@
     <md-content class="md-padding">
       <h1 class="md-display-1"> Accessing and modifying Materials and Textures through scripts</h1>
         <p> Of course you can modify the materials and textures of a game object through scripts! To do that, open a script get the renderer component and start modifying the material component! </p>
-        <pre><code>
+        <div hljs hljs-no-escape><pre><code>
             public Texture grassTexture;
             public Material grassMaterial;
 
@@ -64,7 +59,7 @@
                 renderer.material.color = Color.blue; // This changes the color of the material
                 renderer.material.mainTextureScale = new Vector2(5f, 5f); // This changes the tiling of the texture
                 renderer.material.mainTexture.wrapMode = TextureWrapMode.Repeat; // Sets the wrapmode of the texture. You can either Tile the texture (Repeat) or map a single texture on the object (Clamp)
-            }</code></pre>
+            }</code></pre></div>
     </md-content>
   </md-tab>
 </md-tabs>

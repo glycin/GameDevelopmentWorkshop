@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
   <md-tab label="Rigidbody">
     <md-content class="md-padding">
@@ -51,26 +46,26 @@ An object can have multiple collider components.
       <h1 class="md-display-1">Physics in scripts</h1>
         Without a rigidbody, collision messages are not sent to objects. At least one of the two colliding objects must have a rigidbody.<br><br>
 The following example shows how to react to certain types of collisions.
-<pre><code class ="cs">
+<div hljs hljs-no-escape><pre><code class ="cs">
 // When a collision happens
 private void OnCollisionEnter(Collision collision) {
 if(collision.gameObject.name == "Ball") {
-    GetComponent<Renderer>().material.color = Color.red;
+    GetComponent&lt;Renderer&gt;().material.color = Color.red;
 } else {
-    GetComponent<Renderer>().material.color = Color.green;
+    GetComponent&lt;Renderer&gt;().material.color = Color.green;
 }
 }
 
 // While touching a trigger collider
 private void OnTriggerStay(Collider other) {
-GetComponent<Renderer>().material.color = Color.yellow;
+GetComponent&lt;Renderer&gt;().material.color = Color.yellow;
 }
 
 // When stopped touching a trigger collider
 private void OnTriggerExit(Collider other) {
-GetComponent<Renderer>().material.color = Color.white;
+GetComponent&lt;Renderer&gt;().material.color = Color.white;
 }
-</code></pre>
+</code></pre></div>
 <center><video width="640" height="480" controls autoplay loop>
     <source = src="../Videos/collisionScript.mp4" type = "video/mp4">
 </video></center>
@@ -79,14 +74,14 @@ A <a href ="https://docs.unity3d.com/ScriptReference/Physics.Raycast.html">Rayca
 <center><img src="../Images/raycast.jpg"/></center>
 In the example code below, a ray is sent 50 meters towards where the object is looking.<br>
 If it hits something, it prints "Hit objectName at X meters.". Otherwise it prints "Didn't hit anything."
-<pre><code class ="cs">var ray = new Ray(transform.position, transform.forward);
+<div hljs hljs-no-escape><pre><code class ="cs">var ray = new Ray(transform.position, transform.forward);
 RaycastHit hit;
 var hitSomething = Physics.Raycast(ray, out hit, 50);
 if (hitSomething) {
     Debug.Log("Hit "+hit.collider.gameObject.name+" at "+hit.distance+" meters.");
 } else {
     Debug.Log("Didn't hit anything.");
-}</code></pre>
+}</code></pre></div>
     </md-content>
   </md-tab>
 </md-tabs>

@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
     <md-tab label="Navigation">
         <md-content class="md-padding">
@@ -42,7 +37,7 @@
             <p>Controlling the agents via script is actually extremely simple. All you have to do is use SetDestination.<br>
                 The following example only instructs the agent once, but you can also do the same in Update or in a custom function.<br>
                 Of course, you can create/move other agents and obstacles using the classic move and Instantiate functions.
-            <pre><code class ="cs">using UnityEngine;
+            <div hljs hljs-no-escape><pre><code class ="cs">using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -52,7 +47,7 @@ public class AgentControl : MonoBehaviour {
 	void Start () {
         GetComponent&lt;NavMeshAgent&gt;().SetDestination(targetPoint.position);
 	}
-}</code></pre>
+}</code></pre></div>
         </p>
         </md-content>
     </md-tab>

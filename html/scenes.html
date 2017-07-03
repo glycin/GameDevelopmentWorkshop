@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
     <h1>Scene Management</h1>
     <p>In Unity, different levels are called Scenes. They can either be whole levels in your game, or parts of them.</p>
@@ -17,40 +12,40 @@
             <h1 class="md-display-1">Load Scene</h1>
             <p>Loading into a new scene is done via the SceneManagement.<br>
             Make sure that the new scene is declared in the build settings (File -> Build Settings).
-            <pre><code class ="cs">using UnityEngine.SceneManagement;
+            <div hljs hljs-no-escape><pre><code class ="cs">using UnityEngine.SceneManagement;
 // class stuff
 void LoadMenu() {
 SceneManager.LoadScene("Menu");
-}</code></pre></p>
+}</code></pre></div></p>
         </md-content>
     </md-tab>
     <md-tab label="SceneLoadAdditive">
         <md-content class="md-padding">
             <h1 class="md-display-1">Load Scene Additive</h1>
-            <p>It is also possible to a scene inside your current scene (instead of switching).<br>This technique is often used for on-demand features, like character preview.<pre><code class ="cs">using UnityEngine.SceneManagement;
+            <p>It is also possible to a scene inside your current scene (instead of switching).<br>This technique is often used for on-demand features, like character preview.<div hljs hljs-no-escape><pre><code class ="cs">using UnityEngine.SceneManagement;
 // class stuff
 void LoadCharacterView() {
 SceneManager.LoadScene("CharacterView", LoadSceneMode.Additive);
-}</code></pre></p>
+}</code></pre></div></p>
         </md-content>
     </md-tab>
     <md-tab label="SceneLoadAsync">
         <md-content class="md-padding">
             <h1 class="md-display-1">Load Scene Async</h1>
-            <p>Loading scene asynchronously means that it tries to load a scene via a coroutine (separate thread) and giving the main thread some time to keep rendering.<br>This is used usually for loading screens, although a custom implementation will always work better.<br>Be aware that it can be buggy!<pre><code class ="cs">using UnityEngine.SceneManagement;
+            <p>Loading scene asynchronously means that it tries to load a scene via a coroutine (separate thread) and giving the main thread some time to keep rendering.<br>This is used usually for loading screens, although a custom implementation will always work better.<br>Be aware that it can be buggy!<div hljs hljs-no-escape><pre><code class ="cs">using UnityEngine.SceneManagement;
 // class stuff
 void LoadBigScene() {
 SceneManager.LoadSceneAsync("BigScene");
-}</code></pre></p>
+}</code></pre></div></p>
         </md-content>
     </md-tab>
     <md-tab label="Quit">
         <md-content class="md-padding">
             <h1 class="md-display-1">Quit Application</h1>
             <p>Quitting the application will close the app completely.
-            <pre><code class ="cs">void Quit() {
+            <div hljs hljs-no-escape><pre><code class ="cs">void Quit() {
 Application.Quit();
-}</code></pre></p>
+}</code></pre></div></p>
         </md-content>
     </md-tab>
 </md-tabs>

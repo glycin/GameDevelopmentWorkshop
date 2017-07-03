@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
           <md-tab label="Scene View">
             <md-content class="md-padding">
@@ -47,12 +42,12 @@
             <md-content class="md-padding">
               <h1 class="md-display-1">The Debugging console</h1>
                 <p> The console window is the output window. Errors, exceptions, warnings and logs are shown here during runtime. Double click the message and the IDE of your choosing will open up and jump to the line that produced the message. You can log messages using the following code:</p>
-               <pre><code class ="cs">
+               <div hljs hljs-no-escape><pre><code class ="cs">
                     // Using the Debug static class: https://docs.unity3d.com/ScriptReference/Debug.html
                     Debug.Log("The name of this gameObject is: " + gameObject.name);
                     //Or
                     print("the name of this gameObject is: " + gameObject.name);
-                </code></pre>
+                </code></pre></div>
                 <center><img src="../Images/ConsoleWindow.png"/></center>
             </md-content>
           </md-tab>

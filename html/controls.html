@@ -1,8 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
-</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
     <md-tab label="Input">
         <md-content class="md-padding">
@@ -40,12 +35,15 @@
     <md-tab label="Interactive Objects">
         <md-content class="md-padding">
             <h1 class="md-display-1">Interactive Objects</h1>
-            <p>To make an object interact whenever the user clicks on it, you can use <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnMouseDown.html">OnMouseDown</a>.<br>It is a built-in function in Monobehaviour that is called whenever the player clicks while the mouse is on top of an object. It essentially uses a raycast (as mentioned in physics) from the mouse point to the world.<br>The following example makes an object red when the user hovers over it. Make sure that the object also contains a collider, otherwise the ray will not find it.<pre><code class ="cs">private void OnMouseEnter() {
-    GetComponent<Renderer>().material.color = Color.red;
-}
-private void OnMouseExit() {
-    GetComponent<Renderer>().material.color = Color.white;
-}</code></pre></p>
+            <p>To make an object interact whenever the user clicks on it, you can use <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnMouseDown.html">OnMouseDown</a>.<br>It is a built-in function in Monobehaviour that is called whenever the player clicks while the mouse is on top of an object. It essentially uses a raycast (as mentioned in physics) from the mouse point to the world.<br>The following example makes an object red when the user hovers over it. Make sure that the object also contains a collider, otherwise the ray will not find it.
+            <div hljs hljs-no-escape><pre><code class ="cs">
+            private void OnMouseEnter() {
+                GetComponent&lt;Renderer&gt;().material.color = Color.red;
+            }
+            private void OnMouseExit() {
+                GetComponent&lt;Renderer&gt;().material.color = Color.white;
+            }
+            </code></pre></div></p>
         </md-content>
     </md-tab>
 </md-tabs>
