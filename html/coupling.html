@@ -50,7 +50,7 @@
                                 var randomPosition = transform.position + Random.insideUnitSphere; // Random position 5 units around this object
                                 var newBall = Instantiate(ballPrefab, randomPosition, Quaternion.identity);
                                 var randomForce = Random.insideUnitSphere * Random.Range(10, 100);
-                                newBall.GetComponent<Rigidbody>().AddForce(randomForce, ForceMode.Impulse);
+                                newBall.GetComponent&lt;Rigidbody&gt;().AddForce(randomForce, ForceMode.Impulse);
                             }	
                         }
                     }
