@@ -1,28 +1,26 @@
-<html lang="en">
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-          <md-tab label="Platform">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Choosing Platform</h1>
-                <p> One of the biggest strengths of Unity, is its multi-platform nature. Unity can build and publish for over 25 platforms, using the same code base. An overview can be found here:</p>
-                <center><a href="https://unity3d.com/unity/features/multiplatform">Overview</a></center>
-                <p> In order to choose your current target platform you click "File" in the toolbar and then "Build Settings". In the bottom half of the popup you will see the platforms. The highlighted platform is the currently active one. You can click on another plaform, then on "Switch Platform" to switch platforms. BE WARNED though, this will force unity to RE-IMPORT all your assets. This means, that if you have a big projects, you could lose hours waiting for Unity to reimport everything. It is good practice to keep different projects for each platform and have a script sync the Asset folders.</p>
-                <center><img src="../Images/platforms.PNG"/></center>
-            </md-content>
-          </md-tab>
-          <md-tab label="Player Settings">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Player Settings</h1>
-                <p> If you click the "Player Settings" button, you will get the player settings inspector window. You can also reach this window through the toolbar: Edit > Project Settings > Player Settings</p>
-                <center><img src="../Images/playerSettings.PNG"/></center>
-                <p>The Player Settings let you set various options for the final game built by Unity. There are a few settings that are the same regardless of the build target but most are platform-specific and divided into several sections. Here you can set the project name, icon, the bundle identifier and many more. You can leave most settings as is for now.</p>
-            </md-content>
-          </md-tab>
-            <md-tab label="Building">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Building your scenes</h1>
-                <p> When your game is done, you will need to build it and spread it out in the world. Each platform builds in its own format. Windows builds an .exe, mac a .dmg, iOS a xCode project, Android an .apk, etc. To build your game, go to the build options, and add your game scene to the project. If you have multiple scenes, and are using these, make sure you drag and drop them in the Scenes in Build window, otherwise Unity won't build them, and your game won't work! Then just press build! Once done Unity will open the file explorer for you, with the generated files. Double click the executable to launch your game! </p>
-                 <center><img src="../Images/buildingScenes.PNG"/></center>
-            </md-content>
-          </md-tab>
-        </md-tabs>
-</html>
+  <md-tab label="Platform">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Choosing Platform</h1>
+        <p> One of the biggest strengths of Unity, is its multi-platform nature. Unity can build and publish for over 25 platforms, using the same code base. An overview can be found here:</p>
+        <center><a href="https://unity3d.com/unity/features/multiplatform">Overview</a></center>
+        <p> In order to choose your current target platform you click "File" in the toolbar and then "Build Settings". In the bottom half of the popup you will see the platforms. The highlighted platform is the currently active one. You can click on another plaform, then on "Switch Platform" to switch platforms. BE WARNED though, this will force unity to RE-IMPORT all your assets. This means, that if you have a big projects, you could lose hours waiting for Unity to reimport everything. It is good practice to keep different projects for each platform and have a script sync the Asset folders.</p>
+        <center><img src="../Images/platforms.PNG"/></center>
+    </md-content>
+  </md-tab>
+  <md-tab label="Player Settings">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Player Settings</h1>
+        <p> If you click the "Player Settings" button, you will get the player settings inspector window. You can also reach this window through the toolbar: Edit > Project Settings > Player Settings</p>
+        <center><img src="../Images/playerSettings.PNG"/></center>
+        <p>The Player Settings let you set various options for the final game built by Unity. There are a few settings that are the same regardless of the build target but most are platform-specific and divided into several sections. Here you can set the project name, icon, the bundle identifier and many more. You can leave most settings as is for now.</p>
+    </md-content>
+  </md-tab>
+    <md-tab label="Building">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Building your scenes</h1>
+        <p> When your game is done, you will need to build it and spread it out in the world. Each platform builds in its own format. Windows builds an .exe, mac a .dmg, iOS a xCode project, Android an .apk, etc. To build your game, go to the build options, and add your game scene to the project. If you have multiple scenes, and are using these, make sure you drag and drop them in the Scenes in Build window, otherwise Unity won't build them, and your game won't work! Then just press build! Once done Unity will open the file explorer for you, with the generated files. Double click the executable to launch your game! </p>
+         <center><img src="../Images/buildingScenes.PNG"/></center>
+    </md-content>
+  </md-tab>
+</md-tabs>

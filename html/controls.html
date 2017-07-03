@@ -1,32 +1,38 @@
-<link rel="stylesheet" href="../Highlightjs/styles/vs2015.css">
-<script src="../Highlightjs/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<html lang="en">
-    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-        <md-tab label="Input">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Input</h1>
-                <p>The main way to handle keyboard and mouse input in Unity is through the <a href="https://docs.unity3d.com/ScriptReference/Input.html">Input</a> class.<br>It provides a way to handle input either by Key or by Axis.<br><br>There are 3 methods for Key input:
-                <ul>
-                	<li>GetKeyDown(KeyCode key): Whether a key was just pressed (once).</li>
-                	<li>GetKeyUp(KeyCode key): Whether a key was just released (once).</li>
-                	<li>GetKey(KeyCode key): Whether a key is being pressed now (continuous).</li>
-            	</ul>
-                <pre><code class ="cs">    private void Update() {
-        if (Input.GetKey(KeyCode.W)) { // Fires constantly
-            // Move forward
-        }
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+    <md-tab label="Input">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Input</h1>
+            <p>The main way to handle keyboard and mouse input in Unity is through the <a href="https://docs.unity3d.com/ScriptReference/Input.html">Input</a> class.<br>It provides a way to handle input either by Key or by Axis.<br><br>There are 3 methods for Key input:
+            <ul>
+                <li>GetKeyDown(KeyCode key): Whether a key was just pressed (once).</li>
+                <li>GetKeyUp(KeyCode key): Whether a key was just released (once).</li>
+                <li>GetKey(KeyCode key): Whether a key is being pressed now (continuous).</li>
+            </ul>
+            <pre><code class ="cs">    private void Update() {
+    if (Input.GetKey(KeyCode.W)) { // Fires constantly
+        // Move forward
+    }
 
-        if (Input.GetMouseButton(0)) { // Fires once
-            // Shoot
-        }
-    }</code></pre>Hardcoding a specific keycode makes the controls less configurable. Unity offers a built-in solution for that already, called Axes, which they can be easily configured either from Unity or in runtime.<pre><code class ="cs">    private void Update() {
-        if(Input.GetAxis("Vertical") > 0) { // More configurable
-            var amount = Input.GetAxis("Vertical");
-            // Move forward by amount [0-1]
-        }
-    }</code></pre>The axis settings can be found under Input settings (Edit -> Project Settings -> Input)<br><center>Input settings<br><div><img src="../Images/input.png"/></div></center></p>
-            </md-content>
-        </md-tab>
-    </md-tabs>
-</html>
+    if (Input.GetMouseButton(0)) { // Fires once
+        // Shoot
+    }
+}</code></pre>Hardcoding a specific keycode makes the controls less configurable. Unity offers a built-in solution for that already, called Axes, which they can be easily configured either from Unity or in runtime.<pre><code class ="cs">    private void Update() {
+    if(Input.GetAxis("Vertical") > 0) { // More configurable
+        var amount = Input.GetAxis("Vertical");
+        // Move forward by amount [0-1]
+    }
+}</code></pre>The axis settings can be found under Input settings (Edit -> Project Settings -> Input)<br><center>Input settings<br><div><img src="../Images/input.png"/></div></center></p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Interactive Objects">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Interactive Objects</h1>
+            <p>To make an object interact whenever the user clicks on it, you can use <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnMouseDown.html">OnMouseDown</a>.<br>It is a built-in function in Monobehaviour that is called whenever the player clicks while the mouse is on top of an object. It essentially uses a raycast (as mentioned in physics) from the mouse point to the world.<br>The following example makes an object red when the user hovers over it. Make sure that the object also contains a collider, otherwise the ray will not find it.<pre><code class ="cs">private void OnMouseEnter() {
+    GetComponent<Renderer>().material.color = Color.red;
+}
+private void OnMouseExit() {
+    GetComponent<Renderer>().material.color = Color.white;
+}</code></pre></p>
+        </md-content>
+    </md-tab>
+</md-tabs>

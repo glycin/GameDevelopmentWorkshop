@@ -1,47 +1,45 @@
-<html lang="en">
-    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-        <md-tab label="Canvas">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Canvas</h1>
-                <p>Canvas is the parent object that holds all UI related objects.<br>While you will see it in your scene as if it is placed somewhere in the world (and probably looks huge), it is instead being directly rendered on the camera.<br><br>It is important to think of the screen size/aspect ratio of your application when creating the canvas.<br>Setting the UI Scale Mode in the Canvas Scaler component to Scale With Screen Size will make the canvas stretch so that it matches the screen size of the device.<br>Setting the reference resolution to 1920x1080,  will make sure that the UI always stretches from a default HD 16:9 resolution.<br>It is important to change this setting before you go on with the UI design! Otherwise, everything else will have a wrong scaling when you make this change later.<br></p><center>Canvas scaler settings<br><div><img src="../Images/canvas.png"/></div></center>
-            </md-content>
-        </md-tab>
-        <md-tab label="RectTransform">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Rect Transform</h1>
-                <p>UI Objects use <a href="https://docs.unity3d.com/ScriptReference/RectTransform.html">Rect Transform</a> instead of normal Transform.<br><br>Rect Transform in the unity inspector gives the option to align the object based on the parent's position.<br><br><center><table><td><center><img src="../Images/rectCenter.png"/><br>Rect Transform with anchor point in the center.</center></td><td><center><img src="../Images/rectStretch.png"/><br>Rect Transform with anchor point in the center and width/height stretch</center></td></table></center><br><center>The two panels shown above results to this<br><div><img src="../Images/rectResult.png"/></div></center></p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Panel">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Panel</h1>
-                <p>A panel is essentially an image that by default stretches 100% by 100% and has lower opacity.<br>While it is no different from an image, it is listed as a separate object because it serves as a preset for a window background.<br><br>A nice way to create two different views in the UI is to have two panels as parent objects.<center><div><img src="../Images/panels.png"/></div><br>Two panels that could represent different views</center></p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Image">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Image</h1>
-                <p>Image is a UI component that displays a picture, or as it is called in the gaming world, a single sprite.<br>The source image of an Image component must be of type Sprite. Therefore, after you import an image to unity, you must also set the texture type from the import settings to Sprite (2D and UI). The import settings can be found in the inspector window, by clicking on the image from the project files.<br><center><div><img src="../Images/importSettings.png"/><br>Import settings for a Sprite.</div></center><br><br>Just like other UI components, an image also aligns based on RectTransform.<br><br><center><div><img src="../Images/imageUI.png"/><br>Example of an image inside a panel.</div></center></p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Text">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Text</h1>
-                <p>The self-explanatory Text component, displays text in the UI.<br>It can use different fonts (as long as they are imported to Unity first), scale dynamically, change color etc.
-                <br><center><div><img src="../Images/textUI.png"/><br>Example of a text created by our feline overlords.</div></center></p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Mask">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Mask</h1>
-                <p>A Mask is a component that hides all underlying content (that are children to the GameObject containing the mask).<br>The shape of the mask is set by the image component.<center><div><img src="../Images/mask.png"/><br>The right way to display Cat Overlord.</div></center><br><center><div><img src="../Images/maskComponents.png"/><br>Setup of the mask object.</div></center><br><center><div><img src="../Images/catOutline.png"/><br>The used mask.</div></center><br><br>PS. The jitter around the mask is caused by the compression import settings.</p>
-            </md-content>
-        </md-tab>
-        <md-tab label="World">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">World Space</h1>
-                <p>In the canvas component, if the render mode is set to world, then instead of rendering directly on the camera, the canvas will render in the world just like all other objects.<br><br>This can be used to create UI inside the world, like computer screens, floating text, dynamic/intricate wall textures etc.<center><div><img src="../Images/worldCanvas.png"/><br>Example world canvas in world space.</div></center></p>
-            </md-content>
-        </md-tab>
-    </md-tabs>
-</html>
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+    <md-tab label="Canvas">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Canvas</h1>
+            <p>Canvas is the parent object that holds all UI related objects.<br>While you will see it in your scene as if it is placed somewhere in the world (and probably looks huge), it is instead being directly rendered on the camera.<br><br>It is important to think of the screen size/aspect ratio of your application when creating the canvas.<br>Setting the UI Scale Mode in the Canvas Scaler component to Scale With Screen Size will make the canvas stretch so that it matches the screen size of the device.<br>Setting the reference resolution to 1920x1080,  will make sure that the UI always stretches from a default HD 16:9 resolution.<br>It is important to change this setting before you go on with the UI design! Otherwise, everything else will have a wrong scaling when you make this change later.<br></p><center>Canvas scaler settings<br><div><img src="../Images/canvas.png"/></div></center>
+        </md-content>
+    </md-tab>
+    <md-tab label="RectTransform">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Rect Transform</h1>
+            <p>UI Objects use <a href="https://docs.unity3d.com/ScriptReference/RectTransform.html">Rect Transform</a> instead of normal Transform.<br><br>Rect Transform in the unity inspector gives the option to align the object based on the parent's position.<br><br><center><table><td><center><img src="../Images/rectCenter.png"/><br>Rect Transform with anchor point in the center.</center></td><td><center><img src="../Images/rectStretch.png"/><br>Rect Transform with anchor point in the center and width/height stretch</center></td></table></center><br><center>The two panels shown above results to this<br><div><img src="../Images/rectResult.png"/></div></center></p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Panel">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Panel</h1>
+            <p>A panel is essentially an image that by default stretches 100% by 100% and has lower opacity.<br>While it is no different from an image, it is listed as a separate object because it serves as a preset for a window background.<br><br>A nice way to create two different views in the UI is to have two panels as parent objects.<center><div><img src="../Images/panels.png"/></div><br>Two panels that could represent different views</center></p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Image">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Image</h1>
+            <p>Image is a UI component that displays a picture, or as it is called in the gaming world, a single sprite.<br>The source image of an Image component must be of type Sprite. Therefore, after you import an image to unity, you must also set the texture type from the import settings to Sprite (2D and UI). The import settings can be found in the inspector window, by clicking on the image from the project files.<br><center><div><img src="../Images/importSettings.png"/><br>Import settings for a Sprite.</div></center><br><br>Just like other UI components, an image also aligns based on RectTransform.<br><br><center><div><img src="../Images/imageUI.png"/><br>Example of an image inside a panel.</div></center></p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Text">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Text</h1>
+            <p>The self-explanatory Text component, displays text in the UI.<br>It can use different fonts (as long as they are imported to Unity first), scale dynamically, change color etc.
+            <br><center><div><img src="../Images/textUI.png"/><br>Example of a text created by our feline overlords.</div></center></p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Mask">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Mask</h1>
+            <p>A Mask is a component that hides all underlying content (that are children to the GameObject containing the mask).<br>The shape of the mask is set by the image component.<center><div><img src="../Images/mask.png"/><br>The right way to display Cat Overlord.</div></center><br><center><div><img src="../Images/maskComponents.png"/><br>Setup of the mask object.</div></center><br><center><div><img src="../Images/catOutline.png"/><br>The used mask.</div></center><br><br>PS. The jitter around the mask is caused by the compression import settings.</p>
+        </md-content>
+    </md-tab>
+    <md-tab label="World">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">World Space</h1>
+            <p>In the canvas component, if the render mode is set to world, then instead of rendering directly on the camera, the canvas will render in the world just like all other objects.<br><br>This can be used to create UI inside the world, like computer screens, floating text, dynamic/intricate wall textures etc.<center><div><img src="../Images/worldCanvas.png"/><br>Example world canvas in world space.</div></center></p>
+        </md-content>
+    </md-tab>
+</md-tabs>

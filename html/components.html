@@ -1,57 +1,55 @@
-<html lang="en">
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-          <md-tab label="Component Architecture">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Component Architecture</h1>
-                <p> While Unity is an amazing gamedev platform, getting used to it will require a bit of initial work, as you'll likely need to shift your cognitive cogs to grasp its component-based architecture. While classic Object Oriented Programming (OOP) can be, and is, used, the Unity workflow highly builds around the structure of components-which requires component-based thinking.</p>
-                <center><img src="../Images/componentsOverview.png"/></center>
-                <p> In the above picture you can pretty easily see how components work. You have a base gameobject and add components to it. Each component should have its own isolated behaviour that affects the game object. In the following bubble diagram you can see an overview of how components work in relation to their game objects and the scene.</p>
-                <center><img src="../Images/componentsArch.png"/></center>
-            </md-content>
-          </md-tab>
-          <md-tab label="Standard Components">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Adding standard components</h1>
-                <p> Unity already supplies you with a huge list of standard components. From animators, to colliders to particle systems and many many more. You can find them all in your toolbar under "Component". Select a game object in your hierarchy, and then select a standard component to add it. </p>
-                <center><img src="../Images/standardComponents.png"/></center>
-                <p> You can also click on a game object and then press the "Add component" button to get a list of standard and custom components.</p>
-                <center><img src="../Images/ComponentBrowser.png"</center>
-            </md-content>
-          </md-tab>
-            <md-tab label="Creating Components">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Creating custom components</h1>
-                <p> Of course Unity would be a lousy engine if you couldn't create your own components! We do that by creating scripts. The scripts contain the unique logic that you want for your new component. To create a new script right click in the project window, Create > C# script (or JS script, but we wont be covering that today).</p>
-                <center><video width="640" height="480" controls autoplay loop>
-                    <source = src="../Videos/createScript.mp4" type = "video/mp4">
-                </video></center>
-                <p> We will dive into the wonderfull world of scripting later in the workshop, or if you are impatient you can go to the "Scripting" chapter. What you do need to know now, is that if you define a variable as public, you can change its value directly in the inspector! If you open the script you just created and add a value like this: </p>
-                <pre><code>
-                    public class MyFirstScript : MonoBehaviour {
+  <md-tab label="Component Architecture">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Component Architecture</h1>
+        <p> While Unity is an amazing gamedev platform, getting used to it will require a bit of initial work, as you'll likely need to shift your cognitive cogs to grasp its component-based architecture. While classic Object Oriented Programming (OOP) can be, and is, used, the Unity workflow highly builds around the structure of components-which requires component-based thinking.</p>
+        <center><img src="../Images/componentsOverview.png"/></center>
+        <p> In the above picture you can pretty easily see how components work. You have a base gameobject and add components to it. Each component should have its own isolated behaviour that affects the game object. In the following bubble diagram you can see an overview of how components work in relation to their game objects and the scene.</p>
+        <center><img src="../Images/componentsArch.png"/></center>
+    </md-content>
+  </md-tab>
+  <md-tab label="Standard Components">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Adding standard components</h1>
+        <p> Unity already supplies you with a huge list of standard components. From animators, to colliders to particle systems and many many more. You can find them all in your toolbar under "Component". Select a game object in your hierarchy, and then select a standard component to add it. </p>
+        <center><img src="../Images/standardComponents.png"/></center>
+        <p> You can also click on a game object and then press the "Add component" button to get a list of standard and custom components.</p>
+        <center><img src="../Images/ComponentBrowser.png"</center>
+    </md-content>
+  </md-tab>
+    <md-tab label="Creating Components">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Creating custom components</h1>
+        <p> Of course Unity would be a lousy engine if you couldn't create your own components! We do that by creating scripts. The scripts contain the unique logic that you want for your new component. To create a new script right click in the project window, Create > C# script (or JS script, but we wont be covering that today).</p>
+        <center><video width="640" height="480" controls autoplay loop>
+            <source = src="../Videos/createScript.mp4" type = "video/mp4">
+        </video></center>
+        <p> We will dive into the wonderfull world of scripting later in the workshop, or if you are impatient you can go to the "Scripting" chapter. What you do need to know now, is that if you define a variable as public, you can change its value directly in the inspector! If you open the script you just created and add a value like this: </p>
+        <pre><code>
+            public class MyFirstScript : MonoBehaviour {
 
-                        public string question;
-                        public int powerLevel;
-                    }
-                </code></pre>
-                <p> Then this is what you will see in the inspector of the game object you attach the script on.</p>
-                <center><img src="../Images/publicVars.png" /></center>
-                <p> Just click on the textfield to adjust the values! </p>
-            </md-content>
-          </md-tab>
-            <md-tab label="Prefabs">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Creating prefabs</h1>
-                <p> It is convenient to build a GameObject in the scene by adding components and setting their properties to the appropriate values. This can create problems, however, when you have an object like an NPC, prop or piece of scenery that is reused in the scene several times. Simply copying the object will certainly produce duplicates but they will all be independently editable. Generally, you want all instances of a particular object to have the same properties, so when you edit one object in the scene, you would prefer not to have to make the same edit repeatedly to all the copies. 
-                    Fortunately, Unity has a Prefab asset type that allows you to store a GameObject object complete with components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.</p>
-                 <center><video width="640" height="480" controls autoplay loop>
-                    <source = src="../Videos/prefab.mp4" type = "video/mp4">
-                </video></center>
-                <p>The inspector for a prefab instance has three buttons not present for a normal object: Select, Revert and Apply. 
-                    The Select button selects the prefab asset from which the instance was generated. This allows you to edit the main prefab and thereby change all its instances. 
-                    However, you can also save overridden values from an instance back to the originating prefab using the Apply button (modified Transform position and rotation values are excluded for obvious reasons). 
-                    This effectively lets you edit all instances (except those which override the value changed) via any single instance and is a very quick and convenient way to make global changes. 
-                    If you experiment with overriding properties but then decide you preferred the default values, you can use the Revert button to realign the instance with its prefab.</p>
-            </md-content>
-          </md-tab>
-        </md-tabs>
-</html>
+                public string question;
+                public int powerLevel;
+            }
+        </code></pre>
+        <p> Then this is what you will see in the inspector of the game object you attach the script on.</p>
+        <center><img src="../Images/publicVars.png" /></center>
+        <p> Just click on the textfield to adjust the values! </p>
+    </md-content>
+  </md-tab>
+    <md-tab label="Prefabs">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Creating prefabs</h1>
+        <p> It is convenient to build a GameObject in the scene by adding components and setting their properties to the appropriate values. This can create problems, however, when you have an object like an NPC, prop or piece of scenery that is reused in the scene several times. Simply copying the object will certainly produce duplicates but they will all be independently editable. Generally, you want all instances of a particular object to have the same properties, so when you edit one object in the scene, you would prefer not to have to make the same edit repeatedly to all the copies. 
+            Fortunately, Unity has a Prefab asset type that allows you to store a GameObject object complete with components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.</p>
+         <center><video width="640" height="480" controls autoplay loop>
+            <source = src="../Videos/prefab.mp4" type = "video/mp4">
+        </video></center>
+        <p>The inspector for a prefab instance has three buttons not present for a normal object: Select, Revert and Apply. 
+            The Select button selects the prefab asset from which the instance was generated. This allows you to edit the main prefab and thereby change all its instances. 
+            However, you can also save overridden values from an instance back to the originating prefab using the Apply button (modified Transform position and rotation values are excluded for obvious reasons). 
+            This effectively lets you edit all instances (except those which override the value changed) via any single instance and is a very quick and convenient way to make global changes. 
+            If you experiment with overriding properties but then decide you preferred the default values, you can use the Revert button to realign the instance with its prefab.</p>
+    </md-content>
+  </md-tab>
+</md-tabs>

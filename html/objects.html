@@ -1,179 +1,177 @@
-<html lang="en">
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-          <md-tab label="Gameobjects">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Creating Gameobjects</h1>
-                <p> Unity works with game objects. Every object currently alive in the game, is a gameobject, which internally inherits from a plain object. A game is, simply put, such gameobjects interacting and reacting to eachother in a playful way! There are multiple ways to creat a gameobject. Unity has some predifined objects you can spawn out of the box. Furthermore you can spawn objects by script.</p>
-                <p> To create a predefined game object, click on "Gameobject" in the toolbar and click on the game object you want. You can find the spawned object in your hierarchy view. You can achieve the same by right clicking in the hierarchy view and selecting the object you want.  </p>
-                <center><img src="../Images/newObject.PNG"/></center>
-                <p> If you want to create game objects using scripts you have three options.</p>
-                <ul>
-                    <li> Use instantiate to spawn a prefab.</li>
-                    <li> Spawn an empty game object.</li>
-                    <li> Spawn a primitive.</li>
-                </ul>
-                <p> And this is how it looks in script:</p>
-                <pre><code>
-                        // Create an empty game object and attach a collider to it.
-                        GameObject emptyGameObject = new GameObject();
-                        emptyGameObject.AddComponent&lt;BoxCollider&gt;();
+  <md-tab label="Gameobjects">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Creating Gameobjects</h1>
+        <p> Unity works with game objects. Every object currently alive in the game, is a gameobject, which internally inherits from a plain object. A game is, simply put, such gameobjects interacting and reacting to eachother in a playful way! There are multiple ways to creat a gameobject. Unity has some predifined objects you can spawn out of the box. Furthermore you can spawn objects by script.</p>
+        <p> To create a predefined game object, click on "Gameobject" in the toolbar and click on the game object you want. You can find the spawned object in your hierarchy view. You can achieve the same by right clicking in the hierarchy view and selecting the object you want.  </p>
+        <center><img src="../Images/newObject.PNG"/></center>
+        <p> If you want to create game objects using scripts you have three options.</p>
+        <ul>
+            <li> Use instantiate to spawn a prefab.</li>
+            <li> Spawn an empty game object.</li>
+            <li> Spawn a primitive.</li>
+        </ul>
+        <p> And this is how it looks in script:</p>
+        <pre><code>
+                // Create an empty game object and attach a collider to it.
+                GameObject emptyGameObject = new GameObject();
+                emptyGameObject.AddComponent&lt;BoxCollider&gt;();
 
-                        // Create a primitive game object and attach a rigidbody and collider
-                        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        cube.AddComponent&lt;Rigidbody&gt;();
-                        cube.AddComponent&lt;BoxCollider&gt;();
+                // Create a primitive game object and attach a rigidbody and collider
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.AddComponent&lt;Rigidbody&gt;();
+                cube.AddComponent&lt;BoxCollider&gt;();
 
-                        // Intantiate an object in the Resources folder and rename it
-                        // Resources.Load searches for the specified object in the Resources folder within your asset folder.
-                        // If you don't have a resources folder, you can create one yourself
-                        GameObject spawnedPrefab = Instantiate(Resources.Load("myPrefab")) as GameObject;
-                        spawnedPrefab.name = "Instantiate object";
-                </code></pre>
-                <p> Knowing this, you can now spawn things like bullets, enemies and much more! You can find all overloads of Intantiate here:</p>
-                <a href="https://docs.unity3d.com/ScriptReference/Object.Instantiate.html"> Instantiate</a>
-            </md-content>
-          </md-tab>
-            <md-tab label="Destroy">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Destroying Gameobjects</h1>
-                <p> Destroying game objects if fairly easy. Just call the Destroy method.</p>
-                <pre><code>
-                       Destroy(gameObject);
-                </code></pre>
-            </md-content>
-          </md-tab>
-          <md-tab label="Movement">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Moving objects</h1>
-                <p> Once you have spawned objects, you can start moving them! This is where the fun really starts. Knowing this you can create arrows, cars, flying people and what ever you want. Each game object has a Transform. A Transform is a set of 3 Vector3 objects, Position, Rotation and Scale.Each number represents an axis, namely the X , Y , Z axises.</p>
-                <p> There are alot of ways to move game objects in a 3D space. For now, we will discuss the basic ways.</p>
-                <center><img src="../Images/tranform.PNG"/></center>
-                <p> You can change the values in the inspector to reposition, rotate and scale an object. To do the same by script you need the following:</p>
-                <pre><code>
-                    // Reposition the gameObject to the 5,5,5 world coordinates
-                    gameObject.transform.position = new Vector3(5.0f,5.0f,5.0f);
-                </code></pre>
-                <p> The above snippet will move the game object once. Of course sometimes you want things to continuesly keep moving. You can achieve that by putting movement code in the Update function.</p>
-                <pre><code>
-                    private float moveZ;
-                    private GameObject sphere;
-                    // Start is run once during start up
-                    void Start()
-                    {
-                        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    }
-                    // Update is run every frame
-                    void Update()
-                    {
-                        moveZ++;
-                        sphere.transform.position = new Vector3(5.0f, 5.0f, moveZ);
-                    }
-                </code></pre>
-                <p> The above snippet will move the sphere by 1 unit every frame in its Z axis. While that certainly works, it isn't really optimized. We keep updating a float referance, create a new Vector3 and then assign it. This can be done much better using the innate Vector3 translation methods Unity offers. </p>
-                <pre><code>
-                    private GameObject sphere;
-                    private float speed = 10;
-                    // Start is run once during start up
-                    void Start()
-                    {
-                        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    }
-                    // Update is run every frame
-                    void Update()
-                    {
-                        sphere.transform.Translate(sphere.transform.forward * Time.deltaTime * speed);
-                    }
-                </code></pre>
-                <p> In the above snippet you directly change the transform of the object. Here we are taking the forward vector of the sphere game object, and multiplying it with a predefined speed. Time.deltatime is the time it took to finish the previous frame. We use this to make the game frame rate independent. If you add or subtract to a value every frame chances are you should multiply with Time.deltaTime. When you multiply with Time.deltaTime you essentially express: I want to move this object 10 meters per second instead of 10 meters per frame. So the above example says: I want to move this sphere forward with a speed of 10 meters per second.</p>
-                <p> Keep in mind that transform values are Vector3 objects, which is a 3-set of floats. That means you can use the +, -, *, / operators as you wish to quickly calculate translations, like this:</p>
-                <pre><code>
-                    sphere.transform.position += transform.forward * Time.deltaTime * speed;
-                </code></pre>
-            </md-content>
-          </md-tab>
-          <md-tab label="Rotation">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Rotation</h1>
-                <p> To rotate objects, you can use the same tricks as with movement. You can set the rotation in the inspector, or directly change its Quaternion value. The easiest way is, to use the Rotate functions.</p>
-                <pre><code>
-                    sphere.transform.Rotate(Vector3.right * Time.deltaTime * speed);
-                </code></pre>
-                <p> Since rotations in a 3D space involve Quaternions, and Quaternions are disgustingly complicated, Unity has provided some helper methods to rotate game objects. Some commonly used methods are:</p>
-                <pre><code>
-                    //LookAt : Rotates the object to look at the target
-                    sphere.transform.LookAt(lookTarget.transform);
-                    //RotateArround: Rotates around given axis
-                    sphere.transform.RotateAround(Vector3.up, speed * Time.deltaTime);
-                </code></pre>
-            </md-content>
-          </md-tab>
-            <md-tab label="Scaling">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Scaling</h1>
-                <p> Unlike position and rotation, the only way to scale an object is changing the localScale Vector3 directly. </p>
-                <pre><code>
-                       sphere.transform.localScale += new Vector3(1,1,1);
-                </code></pre>
-                <p> This will make the sphere grow by 1 meter every frame.</p>
-            </md-content>
-          </md-tab>
-            <md-tab label="Physic based">
-            <md-content class="md-padding">
-              <h1 class="md-display-1">Physics based movement</h1>
-                <p> If you have a rigidbody attached to your game object, you can use physics to move your objects. Keep in mind that physics try to simulate reality, so adding force to move objects can have some undesired, fun effects.</p>
-                <pre><code>
-                    private GameObject sphere;
-                    private float speed = 10;
-                    private Rigidbody mRigidBody;
-                    // Start is run once during start up
-                    void Start()
-                    {
-                        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        //Add Rigidbody to use physics and some forward force
-                        mRigidBody = sphere.AddComponent&lt;Rigidbody&gt;();
-                    }
-                    // Update is run every frame
-                    void Update()
-                    {
-                            mRigidBody.AddForce(transform.forward * Time.deltaTime * speed);
-                    }
-                </code></pre>
-                <p> This adds some forward force every second. You might have noticed that here I used "transform.forward" instead of "sphere.transform.forward". This means that I use the world forward vector instead the objects forward vector.</p>
-                <p> You can also rotate objects using Torque</p>
-                <pre><code>
-                    mRigidBody.AddTorque(transform.up * speed);
-                </code></pre>
-                <p> Most important of all. Now you know all this, you can make explosions! We could use AddForce and AddTorque to simulate an explosive force, but thankfully Unity provides us with a helper method, AddExplosionForce</p>
-                <pre><code>
-                    private float explosionPower = 15000f;
-                    private Vector3 explosionPosition = Vector3.zero;
-                    private float explosionRadius = 1000f;
-                    // Start is run once during start up
-                    void Start()
-                    {
-                        // Unity method that invokes a method after x ammount of time in seconds
-                        Invoke("Explode", 5.0f);
-                    }
+                // Intantiate an object in the Resources folder and rename it
+                // Resources.Load searches for the specified object in the Resources folder within your asset folder.
+                // If you don't have a resources folder, you can create one yourself
+                GameObject spawnedPrefab = Instantiate(Resources.Load("myPrefab")) as GameObject;
+                spawnedPrefab.name = "Instantiate object";
+        </code></pre>
+        <p> Knowing this, you can now spawn things like bullets, enemies and much more! You can find all overloads of Intantiate here:</p>
+        <a href="https://docs.unity3d.com/ScriptReference/Object.Instantiate.html"> Instantiate</a>
+    </md-content>
+  </md-tab>
+    <md-tab label="Destroy">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Destroying Gameobjects</h1>
+        <p> Destroying game objects if fairly easy. Just call the Destroy method.</p>
+        <pre><code>
+               Destroy(gameObject);
+        </code></pre>
+    </md-content>
+  </md-tab>
+  <md-tab label="Movement">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Moving objects</h1>
+        <p> Once you have spawned objects, you can start moving them! This is where the fun really starts. Knowing this you can create arrows, cars, flying people and what ever you want. Each game object has a Transform. A Transform is a set of 3 Vector3 objects, Position, Rotation and Scale.Each number represents an axis, namely the X , Y , Z axises.</p>
+        <p> There are alot of ways to move game objects in a 3D space. For now, we will discuss the basic ways.</p>
+        <center><img src="../Images/tranform.PNG"/></center>
+        <p> You can change the values in the inspector to reposition, rotate and scale an object. To do the same by script you need the following:</p>
+        <pre><code>
+            // Reposition the gameObject to the 5,5,5 world coordinates
+            gameObject.transform.position = new Vector3(5.0f,5.0f,5.0f);
+        </code></pre>
+        <p> The above snippet will move the game object once. Of course sometimes you want things to continuesly keep moving. You can achieve that by putting movement code in the Update function.</p>
+        <pre><code>
+            private float moveZ;
+            private GameObject sphere;
+            // Start is run once during start up
+            void Start()
+            {
+                sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            }
+            // Update is run every frame
+            void Update()
+            {
+                moveZ++;
+                sphere.transform.position = new Vector3(5.0f, 5.0f, moveZ);
+            }
+        </code></pre>
+        <p> The above snippet will move the sphere by 1 unit every frame in its Z axis. While that certainly works, it isn't really optimized. We keep updating a float referance, create a new Vector3 and then assign it. This can be done much better using the innate Vector3 translation methods Unity offers. </p>
+        <pre><code>
+            private GameObject sphere;
+            private float speed = 10;
+            // Start is run once during start up
+            void Start()
+            {
+                sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            }
+            // Update is run every frame
+            void Update()
+            {
+                sphere.transform.Translate(sphere.transform.forward * Time.deltaTime * speed);
+            }
+        </code></pre>
+        <p> In the above snippet you directly change the transform of the object. Here we are taking the forward vector of the sphere game object, and multiplying it with a predefined speed. Time.deltatime is the time it took to finish the previous frame. We use this to make the game frame rate independent. If you add or subtract to a value every frame chances are you should multiply with Time.deltaTime. When you multiply with Time.deltaTime you essentially express: I want to move this object 10 meters per second instead of 10 meters per frame. So the above example says: I want to move this sphere forward with a speed of 10 meters per second.</p>
+        <p> Keep in mind that transform values are Vector3 objects, which is a 3-set of floats. That means you can use the +, -, *, / operators as you wish to quickly calculate translations, like this:</p>
+        <pre><code>
+            sphere.transform.position += transform.forward * Time.deltaTime * speed;
+        </code></pre>
+    </md-content>
+  </md-tab>
+  <md-tab label="Rotation">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Rotation</h1>
+        <p> To rotate objects, you can use the same tricks as with movement. You can set the rotation in the inspector, or directly change its Quaternion value. The easiest way is, to use the Rotate functions.</p>
+        <pre><code>
+            sphere.transform.Rotate(Vector3.right * Time.deltaTime * speed);
+        </code></pre>
+        <p> Since rotations in a 3D space involve Quaternions, and Quaternions are disgustingly complicated, Unity has provided some helper methods to rotate game objects. Some commonly used methods are:</p>
+        <pre><code>
+            //LookAt : Rotates the object to look at the target
+            sphere.transform.LookAt(lookTarget.transform);
+            //RotateArround: Rotates around given axis
+            sphere.transform.RotateAround(Vector3.up, speed * Time.deltaTime);
+        </code></pre>
+    </md-content>
+  </md-tab>
+    <md-tab label="Scaling">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Scaling</h1>
+        <p> Unlike position and rotation, the only way to scale an object is changing the localScale Vector3 directly. </p>
+        <pre><code>
+               sphere.transform.localScale += new Vector3(1,1,1);
+        </code></pre>
+        <p> This will make the sphere grow by 1 meter every frame.</p>
+    </md-content>
+  </md-tab>
+    <md-tab label="Physic based">
+    <md-content class="md-padding">
+      <h1 class="md-display-1">Physics based movement</h1>
+        <p> If you have a rigidbody attached to your game object, you can use physics to move your objects. Keep in mind that physics try to simulate reality, so adding force to move objects can have some undesired, fun effects.</p>
+        <pre><code>
+            private GameObject sphere;
+            private float speed = 10;
+            private Rigidbody mRigidBody;
+            // Start is run once during start up
+            void Start()
+            {
+                sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                //Add Rigidbody to use physics and some forward force
+                mRigidBody = sphere.AddComponent&lt;Rigidbody&gt;();
+            }
+            // Update is run every frame
+            void Update()
+            {
+                    mRigidBody.AddForce(transform.forward * Time.deltaTime * speed);
+            }
+        </code></pre>
+        <p> This adds some forward force every second. You might have noticed that here I used "transform.forward" instead of "sphere.transform.forward". This means that I use the world forward vector instead the objects forward vector.</p>
+        <p> You can also rotate objects using Torque</p>
+        <pre><code>
+            mRigidBody.AddTorque(transform.up * speed);
+        </code></pre>
+        <p> Most important of all. Now you know all this, you can make explosions! We could use AddForce and AddTorque to simulate an explosive force, but thankfully Unity provides us with a helper method, AddExplosionForce</p>
+        <pre><code>
+            private float explosionPower = 15000f;
+            private Vector3 explosionPosition = Vector3.zero;
+            private float explosionRadius = 1000f;
+            // Start is run once during start up
+            void Start()
+            {
+                // Unity method that invokes a method after x ammount of time in seconds
+                Invoke("Explode", 5.0f);
+            }
 
-                    void Explode()
-                    {
-                        // Get all overlapping colliders at point
-                        Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
-                        foreach (Collider hit in colliders)
-                        {
-                            // Inject reference of every hit rigidbody
-                            Rigidbody rb = hit.GetComponent&lt;Rigidbody&gt;();
+            void Explode()
+            {
+                // Get all overlapping colliders at point
+                Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
+                foreach (Collider hit in colliders)
+                {
+                    // Inject reference of every hit rigidbody
+                    Rigidbody rb = hit.GetComponent&lt;Rigidbody&gt;();
 
-                            if (rb != null)
-                                // Boom
-                                rb.AddExplosionForce(explosionRadius, explosionPosition, explosionRadius, 3.0F);
-                        }
-                    }
-                </code></pre>
-                    <center><video width="640" height="480" controls autoplay loop>
-                        <source = src="../Videos/explosion.mp4" type = "video/mp4">
-                    </video></center>
-            </md-content>
-          </md-tab>
-        </md-tabs>
-</html>
+                    if (rb != null)
+                        // Boom
+                        rb.AddExplosionForce(explosionRadius, explosionPosition, explosionRadius, 3.0F);
+                }
+            }
+        </code></pre>
+            <center><video width="640" height="480" controls autoplay loop>
+                <source = src="../Videos/explosion.mp4" type = "video/mp4">
+            </video></center>
+    </md-content>
+  </md-tab>
+</md-tabs>

@@ -18,9 +18,7 @@ angular.module('GameDevWorkshop', ['ngMaterial']).controller('workshopController
         { name: 'Scripting', id: '13' },
         { name: 'Effects', id: '14' },
         { name: 'Controls', id: '15' },
-        { name: 'Web Calls', id: '16' },
-        { name: 'Tips & Tricks', id: '17' },
-        { name: 'Virtual Reality', id: '18' }
+        { name: 'Virtual Reality', id: '16' }
     ];
 
     $scope.loadPage = function (page) {
@@ -45,8 +43,6 @@ angular.module('GameDevWorkshop', ['ngMaterial']).controller('workshopController
         { name: 'scripts', url : 'html/scripting.html'},
         { name: 'effects', url : 'html/effects.html'},
         { name: 'controls', url : 'html/controls.html'},
-        { name: 'web', url : 'html/web.html'},
-        { name: 'tipstricks', url : 'html/tipstricks.html'},
         { name: 'vr', url : 'html/vr.html'}
     ];
     $scope.template = $scope.templates[0];

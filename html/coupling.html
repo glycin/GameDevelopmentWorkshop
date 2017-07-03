@@ -1,183 +1,178 @@
-<link rel="stylesheet" href="../Highlightjs/styles/vs2015.css">
-<script src="../Highlightjs/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<html lang="en">
-    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-        <md-tab label="Reference">
-            <md-content class="md-padding">
-                <h1>Script Coupling</h1>
-                <p>What many starters (and professionals) in Unity often have trouble with, is setting up a proper way for their scripts to communicate.<br>Since Unity works with component based programming (even though traditional OOP techniques are still deployed), it gets a bit more complicated for someone used to OOP.<br>Another common difficulty is that all objects run at the same time, making them difficult to synchronize and control.</p>
-                <h1 class="md-display-1">Inspector Reference</h1>
-                <p>
-                	When declaring a variable public in a monobehaviour script, Unity will automatically display it in the inspector.
-                	<br>Using this reference, you can connect your scripts to other unity components or other scripts.<br> 
-                	<pre><code class ="cs">using System.Collections;
-                        using System.Collections.Generic;
-                        using UnityEngine;
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+    <md-tab label="Reference">
+        <md-content class="md-padding">
+            <h1>Script Coupling</h1>
+            <p>What many starters (and professionals) in Unity often have trouble with, is setting up a proper way for their scripts to communicate.<br>Since Unity works with component based programming (even though traditional OOP techniques are still deployed), it gets a bit more complicated for someone used to OOP.<br>Another common difficulty is that all objects run at the same time, making them difficult to synchronize and control.</p>
+            <h1 class="md-display-1">Inspector Reference</h1>
+            <p>
+                When declaring a variable public in a monobehaviour script, Unity will automatically display it in the inspector.
+                <br>Using this reference, you can connect your scripts to other unity components or other scripts.<br> 
+                <pre><code class ="cs">using System.Collections;
+                    using System.Collections.Generic;
+                    using UnityEngine;
 
-                        public class MyScript : MonoBehaviour {
-                            public float speed; // Primitive
-                            public Vector3 position; // Unity class
-                            public int count; // Primitive
-                            private float height = 1.2f; // Private primitive
-                            public Transform spawnPoint; // Component
-                            public Rigidbody physics; // Component
-                            public Ball ball; // Custom script
-                        }</code></pre>Inspector view of the script above. Notice that height is not displayed, since it is declared public. These values can now be set in the inspector.<br>They will have different values for different objects with the same script.<br><center><img src="../Images/inspectorReference.png"/></center>
-                </p>
-            </md-content>
-        </md-tab>
-        <md-tab label="GetComponent">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Get Component</h1>
-                <p>
-                	In component based programming, objects are a collection of components. In Unity, you can request a certain component from a GameObject using <a href="https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html">GetComponent</a>.
-                	<br>
-                	<h3>Example</h3>
-                	Assuming we have a prefab "Ball" that is a simple sphere with a rigidbody and a sphere collider, we make the following script:
-                	<br><pre><code class ="cs">
-                				using System.Collections;
-						using System.Collections.Generic;
-						using UnityEngine;
+                    public class MyScript : MonoBehaviour {
+                        public float speed; // Primitive
+                        public Vector3 position; // Unity class
+                        public int count; // Primitive
+                        private float height = 1.2f; // Private primitive
+                        public Transform spawnPoint; // Component
+                        public Rigidbody physics; // Component
+                        public Ball ball; // Custom script
+                    }</code></pre>Inspector view of the script above. Notice that height is not displayed, since it is declared public. These values can now be set in the inspector.<br>They will have different values for different objects with the same script.<br><center><img src="../Images/inspectorReference.png"/></center>
+            </p>
+        </md-content>
+    </md-tab>
+    <md-tab label="GetComponent">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Get Component</h1>
+            <p>
+                In component based programming, objects are a collection of components. In Unity, you can request a certain component from a GameObject using <a href="https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html">GetComponent</a>.
+                <br>
+                <h3>Example</h3>
+                Assuming we have a prefab "Ball" that is a simple sphere with a rigidbody and a sphere collider, we make the following script:
+                <br><pre><code class ="cs">
+                            using System.Collections;
+                    using System.Collections.Generic;
+                    using UnityEngine;
 
-						public class ComponentExample : MonoBehaviour {
-						    public GameObject ballPrefab; // Inspector Reference
+                    public class ComponentExample : MonoBehaviour {
+                        public GameObject ballPrefab; // Inspector Reference
 
-							// Use this for initialization
-							void Start () {
-							    for(int i = 0; i < 10; i++) {
-						            var randomPosition = transform.position + Random.insideUnitSphere; // Random position 5 units around this object
-						            var newBall = Instantiate(ballPrefab, randomPosition, Quaternion.identity);
-						            var randomForce = Random.insideUnitSphere * Random.Range(10, 100);
-						            newBall.GetComponent<Rigidbody>().AddForce(randomForce, ForceMode.Impulse);
-						        }	
-							}
-						}
-                	</code></pre><br>
-				    <center>
-					    <video width="640" height="480" controls autoplay loop>
-				            <source = src="../Videos/getcomponent.mp4" type = "video/mp4">
-				        </video>
-			        </center>
-                </p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Find">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">GameObject.Find</h1>
-                <p>
-                The GameObject class offers some static methods that can be used to find objects that currently exist in the scene.<br>
-                Those find methods can help link scripts, or better, search for scripts.<br>
-                Some of the most useful ones are:
-                <ul>
-	                <li>
-	                	<a href="https://docs.unity3d.com/ScriptReference/GameObject.Find.html">Find(string name)</a>: Searches for a GameObject in the scene by name 
-	                </li>
-	                <li>
-	                	<a href="https://docs.unity3d.com/ScriptReference/GameObject.FindWithTag.html">FindWithTag(string tag)</a>: Searches for a GameObject in the scene by tag 
-	                </li>
-	                <li>
-	                	<a href="https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html">FindObjectOfType(Type type)</a>: Searches for a GameObject in the scene by type 
-	                </li>
-                </ul> 
-                Keep in mind that these methods are not performance friendly. They should be avoided when possible, but they are an easy way out for someone who is not proficient with coding patterns.
-                </p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Singleton">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Singleton</h1>
-                <p>
-                Usually in a scene there are a couple scripts that are unique (exist only once), and serve the purposes of ruling the game. Usually we call those 'Handlers'.<br>
-                Handler scripts, since they exist only once, can basically be turned into singletons.<br>
-                Since Unity's monobehaviour prevents us from following the singleton pattern to the letter, we can make a fake singleton, ie. only using the Instance.<br>
-                <pre><code class ="cs">using UnityEngine;
+                        // Use this for initialization
+                        void Start () {
+                            for(int i = 0; i < 10; i++) {
+                                var randomPosition = transform.position + Random.insideUnitSphere; // Random position 5 units around this object
+                                var newBall = Instantiate(ballPrefab, randomPosition, Quaternion.identity);
+                                var randomForce = Random.insideUnitSphere * Random.Range(10, 100);
+                                newBall.GetComponent<Rigidbody>().AddForce(randomForce, ForceMode.Impulse);
+                            }	
+                        }
+                    }
+                </code></pre><br>
+                <center>
+                    <video width="640" height="480" controls autoplay loop>
+                        <source = src="../Videos/getcomponent.mp4" type = "video/mp4">
+                    </video>
+                </center>
+            </p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Find">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">GameObject.Find</h1>
+            <p>
+            The GameObject class offers some static methods that can be used to find objects that currently exist in the scene.<br>
+            Those find methods can help link scripts, or better, search for scripts.<br>
+            Some of the most useful ones are:
+            <ul>
+                <li>
+                    <a href="https://docs.unity3d.com/ScriptReference/GameObject.Find.html">Find(string name)</a>: Searches for a GameObject in the scene by name 
+                </li>
+                <li>
+                    <a href="https://docs.unity3d.com/ScriptReference/GameObject.FindWithTag.html">FindWithTag(string tag)</a>: Searches for a GameObject in the scene by tag 
+                </li>
+                <li>
+                    <a href="https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html">FindObjectOfType(Type type)</a>: Searches for a GameObject in the scene by type 
+                </li>
+            </ul> 
+            Keep in mind that these methods are not performance friendly. They should be avoided when possible, but they are an easy way out for someone who is not proficient with coding patterns.
+            </p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Singleton">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Singleton</h1>
+            <p>
+            Usually in a scene there are a couple scripts that are unique (exist only once), and serve the purposes of ruling the game. Usually we call those 'Handlers'.<br>
+            Handler scripts, since they exist only once, can basically be turned into singletons.<br>
+            Since Unity's monobehaviour prevents us from following the singleton pattern to the letter, we can make a fake singleton, ie. only using the Instance.<br>
+            <pre><code class ="cs">using UnityEngine;
 
 public class GameHandler : MonoBehaviour {
-    
-    public static GameHandler Instance { private set; get; }
 
-    private void Start() {
-        Instance = this;
-    }
+public static GameHandler Instance { private set; get; }
 
-    public void SayHi(){
-    	print("Hi");
-    }
+private void Start() {
+    Instance = this;
+}
 
-    // Game handler stuff
+public void SayHi(){
+    print("Hi");
+}
+
+// Game handler stuff
 }</code></pre><pre><code class ="cs">using UnityEngine;
 
 public class OtherScript : MonoBehaviour {
 
-    void OnCollisionEnter(Collision collision){
-    	GameHandler.Instance.SayHi();
-    }
+void OnCollisionEnter(Collision collision){
+    GameHandler.Instance.SayHi();
+}
 }</code></pre>
 Of course, this doesn't ensure that only one GameHandler object can exist, as the Singleton pattern requires, but if managed properly, it can work the same way. 
-                </p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Injection">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Dependency Injection</h1>
-                <p>
-                Injection in monobehaviour scripts works very similarly to the traditional dependency injection. Instead of being done in the constructor, it is done via an Initialize method.<br>This method is called by the script that creates this object, usually a game handler.<pre><code class ="cs">public class MyScript : MonoBehaviour {
-    private UIHandler ui;
+            </p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Injection">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Dependency Injection</h1>
+            <p>
+            Injection in monobehaviour scripts works very similarly to the traditional dependency injection. Instead of being done in the constructor, it is done via an Initialize method.<br>This method is called by the script that creates this object, usually a game handler.<pre><code class ="cs">public class MyScript : MonoBehaviour {
+private UIHandler ui;
 
-    public void Initialize(UIHandler ui) {
-        this.ui = ui;
-    }
+public void Initialize(UIHandler ui) {
+    this.ui = ui;
+}
 }</code></pre>
-                </p>
-            </md-content>
-        </md-tab>
-        <md-tab label="Events">
-            <md-content class="md-padding">
-                <h1 class="md-display-1">Events</h1>
-                <p>Events are key moments in the game that are broadcasted. Objects (scripts) can choose to subscribe to the events that they want to listen.<br>
-                You can find a simplified event handler in <b><a href="https://github.com/NedelkosM/EventHandler">Github</a></b>.<br>
-                While it is really easy to use and saves a lot of trouble and lines of code, it is also easy to overuse it. Make sure to create only high-level events. For example "ItemPickup" is a proper event, but "Move" is not. It depends on the project and its setup, of course.<br>
-                <h3>Example:</h3>
-                In this example, the GameHandler controls the amount of experience of our hero. If he/she levels up, a UI popup has to be shown, and a sound effect has to be played (among other things).<br>Instead of connecting the GameHandler to the UIHandler and the SoundHandler (and eventually to hunderds more), a simple event is being broadcasted.<br>That way, there are no dependncies between the GameHandler and the other scripts, and the code is much cleaner.
-                <pre><code class ="cs">public class GameHandler : MonoBehaviour {
-    public delegate void LevelUp(int newLevel); // A levelup event
+            </p>
+        </md-content>
+    </md-tab>
+    <md-tab label="Events">
+        <md-content class="md-padding">
+            <h1 class="md-display-1">Events</h1>
+            <p>Events are key moments in the game that are broadcasted. Objects (scripts) can choose to subscribe to the events that they want to listen.<br>
+            You can find a simplified event handler in <b><a href="https://github.com/NedelkosM/EventHandler">Github</a></b>.<br>
+            While it is really easy to use and saves a lot of trouble and lines of code, it is also easy to overuse it. Make sure to create only high-level events. For example "ItemPickup" is a proper event, but "Move" is not. It depends on the project and its setup, of course.<br>
+            <h3>Example:</h3>
+            In this example, the GameHandler controls the amount of experience of our hero. If he/she levels up, a UI popup has to be shown, and a sound effect has to be played (among other things).<br>Instead of connecting the GameHandler to the UIHandler and the SoundHandler (and eventually to hunderds more), a simple event is being broadcasted.<br>That way, there are no dependncies between the GameHandler and the other scripts, and the code is much cleaner.
+            <pre><code class ="cs">public class GameHandler : MonoBehaviour {
+public delegate void LevelUp(int newLevel); // A levelup event
 
-    private float currentExperience;
-    private int level;
+private float currentExperience;
+private int level;
 
-    public void AddExperience(float amount) {
-        currentExperience += Mathf.Max(amount,0);
-        if(currentExperience > 1000) {
-            level++;
-            currentExperience = 0;
-            Events.Instance.Trigger&lt;LevelUp&gt;(level);
-        }
+public void AddExperience(float amount) {
+    currentExperience += Mathf.Max(amount,0);
+    if(currentExperience > 1000) {
+        level++;
+        currentExperience = 0;
+        Events.Instance.Trigger&lt;LevelUp&gt;(level);
     }
+}
 }</code></pre><pre><code class ="cs">public class UIHandler : MonoBehaviour {
-    public void Start() {
-        Events.Instance.Subscribe&lt;GameHandler.LevelUp&gt;(OnLevelUp);
-    }
+public void Start() {
+    Events.Instance.Subscribe&lt;GameHandler.LevelUp&gt;(OnLevelUp);
+}
 
-    public void OnLevelUp(int newLevel){ // Good naming convention for events: OnEvent..
-    	LevelUpPopop();
-    }
+public void OnLevelUp(int newLevel){ // Good naming convention for events: OnEvent..
+    LevelUpPopop();
+}
 
-    public void LevelUpPopup() {
-        // Create UI popup animation
-    }
+public void LevelUpPopup() {
+    // Create UI popup animation
+}
 }</code></pre><pre><code class ="cs">public class SoundHandler : MonoBehaviour {
-    public void Start() {
-        Events.Instance.Subscribe&lt;GameHandler.LevelUp&gt;(LevelUpPopup);
-    }
+public void Start() {
+    Events.Instance.Subscribe&lt;GameHandler.LevelUp&gt;(LevelUpPopup);
+}
 
-    public void LevelUpSound(int newLevel) {
-        // Play levelup sound effect
-    }
+public void LevelUpSound(int newLevel) {
+    // Play levelup sound effect
+}
 }</code></pre>
-                To protect events being triggered by non-authorized scripts, wrapping an event handler around a controller script, will make sure only valid triggers are called.
-                </p>
-            </md-content>
-        </md-tab>
-    </md-tabs>
-</html>
+            To protect events being triggered by non-authorized scripts, wrapping an event handler around a controller script, will make sure only valid triggers are called.
+            </p>
+        </md-content>
+    </md-tab>
+</md-tabs>
