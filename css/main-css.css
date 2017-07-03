@@ -1,13 +1,11 @@
 md-sidenav  {
-  width: 150px;height:100%;
+  width: 150px;
   padding:20px;
   background-color: #F8F8F8;
 }
 
 md-content {
   background-color : #fff;
-  height:100%;
-  padding:20px;
 }
 
 .btn1 {

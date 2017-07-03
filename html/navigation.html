@@ -4,7 +4,7 @@
             <h1 class="md-display-1">Navigation</h1>
             <p>Many games or applications need AI agents for NPCs (non-playable-characters). Navigation in Unity is a built-in solution that supports 3D pathfinding and smooth movement for objects (called Agents).<br>
             We will recreate the following example
-            <center><video width="100%" controls autoplay loop>
+            <center><video width="640" height="480" controls autoplay loop>
                 <source = src="../Videos/navigation.mp4" type = "video/mp4"></video></center><br>
                 Most of Navigation is done via the Navigation window .<center><div><img src="../Images/navWindow.PNG"/></div>The navigation window<br></center>
             <h3>Agents</h3><center><div><img src="../Images/navAgents.PNG"/></div><br></center>Shows the agent types. By default, all agents are Humanoid. This controls the behaviour of each agent type, like how high slopes they can walk.<h3>Areas</h3><center><div><img src="../Images/navAreas.PNG"/></div><br></center>Shows the layers of navigation areas. Each area can be given a Cost. The more expensive, the less the agents will try to use it.<h3>Bake</h3><center><div><img src="../Images/navBake.PNG"/></div><br></center>Builds the navigation data based on the static components of the scene.<h3>Object</h3><center><div><img src="../Images/navObject.PNG"/></div><br></center>Shows all objects in the scene that are currently playing a role in the navigation. Objects that have a mesh renderer and are marked as static can be declared as navigationable areas.</p>
@@ -27,7 +27,7 @@
     <md-tab label="Build">
         <md-content class="md-padding">
             <h1 class="md-display-1">Build</h1>
-            <p>Many components of the Navigation system in Unity must be prepared before they are deployed, and they are not dynamically responsive on runtime. For example, areas that are marked as walkable or not, are not updated on runtime. They are built once before the game is built. On the other hand, AI agents and Nav mesh obstacles are dynamic. Moving obstacles are possible, but moving navigation areas as not.<br><center><div><img src="../Images/navArea.PNG"/></div>Different types of navigable areas.<br></center><br>In the picture above, you can see two different colored areas that also have a different navigation cost. In this example, going on the road is much more efficient than going on the grass. Therefore, agents will only navigate on the road (unless their target is on the grass).<br><center><div><img src="../Images/navExtraObstacle.PNG"/></div>Extra obstacle.<br></center>If we though place another obstacle that spans along the whole road length, the agent will be forced to navigate on grass, as it does in the example video.<center><video width="100%" controls autoplay loop>
+            <p>Many components of the Navigation system in Unity must be prepared before they are deployed, and they are not dynamically responsive on runtime. For example, areas that are marked as walkable or not, are not updated on runtime. They are built once before the game is built. On the other hand, AI agents and Nav mesh obstacles are dynamic. Moving obstacles are possible, but moving navigation areas as not.<br><center><div><img src="../Images/navArea.PNG"/></div>Different types of navigable areas.<br></center><br>In the picture above, you can see two different colored areas that also have a different navigation cost. In this example, going on the road is much more efficient than going on the grass. Therefore, agents will only navigate on the road (unless their target is on the grass).<br><center><div><img src="../Images/navExtraObstacle.PNG"/></div>Extra obstacle.<br></center>If we though place another obstacle that spans along the whole road length, the agent will be forced to navigate on grass, as it does in the example video.<center><video width="640" height="480" controls autoplay loop>
                 <source = src="../Videos/navigation.mp4" type = "video/mp4"></video></center></p>
         </md-content>
     </md-tab>
@@ -45,7 +45,7 @@ public class AgentControl : MonoBehaviour {
     public Transform targetPoint;
 
 	void Start () {
-        GetComponent<NavMeshAgent>().SetDestination(targetPoint.position);
+        GetComponent&lt;NavMeshAgent&gt;().SetDestination(targetPoint.position);
 	}
 }</code></pre>
         </p>
