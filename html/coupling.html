@@ -3,27 +3,27 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html lang="en">
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
-        <h1>Script Coupling</h1>
-        <p>What many starters (and professionals) in Unity often have trouble with, is setting up a proper way for their scripts to communicate.<br>Since Unity works with component based programming (even though traditional OOP techniques are still deployed), it gets a bit more complicated for someone used to OOP.<br>Another common difficulty is that all objects run at the same time, making them difficult to synchronize and control.</p>
         <md-tab label="Reference">
             <md-content class="md-padding">
+                <h1>Script Coupling</h1>
+                <p>What many starters (and professionals) in Unity often have trouble with, is setting up a proper way for their scripts to communicate.<br>Since Unity works with component based programming (even though traditional OOP techniques are still deployed), it gets a bit more complicated for someone used to OOP.<br>Another common difficulty is that all objects run at the same time, making them difficult to synchronize and control.</p>
                 <h1 class="md-display-1">Inspector Reference</h1>
                 <p>
                 	When declaring a variable public in a monobehaviour script, Unity will automatically display it in the inspector.
                 	<br>Using this reference, you can connect your scripts to other unity components or other scripts.<br> 
                 	<pre><code class ="cs">using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+                        using System.Collections.Generic;
+                        using UnityEngine;
 
-public class MyScript : MonoBehaviour {
-    public float speed; // Primitive
-    public Vector3 position; // Unity class
-    public int count; // Primitive
-    private float height = 1.2f; // Private primitive
-    public Transform spawnPoint; // Component
-    public Rigidbody physics; // Component
-    public Ball ball; // Custom script
-}</code></pre>Inspector view of the script above. Notice that height is not displayed, since it is declared public. These values can now be set in the inspector.<br>They will have different values for different objects with the same script.<br><center><img src="../Images/inspectorReference.png"/></center>
+                        public class MyScript : MonoBehaviour {
+                            public float speed; // Primitive
+                            public Vector3 position; // Unity class
+                            public int count; // Primitive
+                            private float height = 1.2f; // Private primitive
+                            public Transform spawnPoint; // Component
+                            public Rigidbody physics; // Component
+                            public Ball ball; // Custom script
+                        }</code></pre>Inspector view of the script above. Notice that height is not displayed, since it is declared public. These values can now be set in the inspector.<br>They will have different values for different objects with the same script.<br><center><img src="../Images/inspectorReference.png"/></center>
                 </p>
             </md-content>
         </md-tab>
