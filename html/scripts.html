@@ -1,0 +1,174 @@
+<head>
+    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+</head>
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+          <md-tab label="Creating Scripts">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Creating scripts</h1>
+                <p> You can make scripts in three languages within Unity. C#, Javascript and Boo. In this workshop we will be solely focusing on C#, and the Unity specific parts of C#. If you have problems with C# syntax, feel free to ask us for help! This chapter will give you some pointers on what to use in order to control your game flow, and how to react to certain events or schedule events. To create a script, right click in the project window and then Create > C# script. Every component in Unity is a script, so you are basically (as shown before) creating a new component.</p>
+                <center><video width="640" height="480" controls autoplay loop>
+                    <source = src="../Videos/createScript.mp4" type = "video/mp4">
+                </video></center>
+                <p> The standard Unity script looks like this: </p>
+                    <div hljs hljs-no-escape>                
+                    <pre><code>
+                    using System.Collections;
+                    using System.Collections.Generic;
+                    using UnityEngine;
+
+                    public class MyFirstScript : MonoBehaviour {
+
+                        // Use this for initialization
+                        void Start () {
+
+                        }
+
+                        // Update is called once per frame
+                        void Update () {
+
+                        }
+                    }
+                </code></pre></div>
+                <p>Basically this is a standard C# class that extends the Monobehaviour class.</p>
+            </md-content>
+          </md-tab>
+          <md-tab label="MonoBehaviour">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">MonoBehaviour</h1>
+                <p> This is it. The single most important class in Unity. The master of all classes. The <b>MonoBehaviour</b> class.</p>
+                <p> Every class in Unity derives from this class. You can still create classes that dont derive from MonoBehaviour, which function as class libraries for helper functions. If you need an object to have some logic during runtime, then you need a MonoBehaviour to control that.</p>
+                <p> The MonoBehaviour holds some key functions than you can override. You can find the full list here: <a hrfef="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"> MonoBehaviour</a>, but these are the most important ones:</p>
+                <ul>
+                    <li>Awake()</li>
+                    <li>Start()</li>
+                    <li>Update()</li>
+                    <li>FixedUpdate()</li>
+                    <li>LateUpdate()</li>
+                </ul>
+                <p> We will explain these in the next tab!</p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Game loop functions">
+            <md-content class="md-padding">
+              <b class="md-display-1">Game loop functions</b>
+                <p>If you dumb it down (alot), you could define a game as a loop that is running forever. Using a couple of functions, you can somewhat control what happens when. All these are only called if the game object is actually enabled.</p>
+              <b>Awake()</b>
+                <p>Awake is the first function to be called when you start a game or a scene. This happens when the gameObject having this script "Awakes". This is called once. </p>
+              <b>Start()</b>
+                <p>Start is the second function in the queue to happen. It is called when the game object has finished it's Awake(). This is also called once.</p>
+              <b>Update()</b>
+                <p>Update is called after start, and afterwards every frame. Update is the most commonly used function to implement any kind of game behaviour. Don't put everything you do in Update() though, since that is a huge performance killer. Think carefully if something you are doing really needs to happen every frame.</p>
+              <b>FixedUpdate()</b>
+                <p>FixedUpdate is called every fixed framerate frame. You should use this when dealing with Rigidbodies (physics). That is because FixedUpdate() happens before rigidbody interpolations and transformations, while Update() happens after that.</p>
+              <b>LateUpdate()</b>
+                <p>LateUpdate is called every frame, and after all Update() functions have been called. You can use this to order your script executions. If you have an object follow another object, put the follow code in LateUpdate. Then you are sure that you will have the latest position of the following object.</p>
+                <p> So knowing this, what will the output be of the following code?</p>
+                <div hljs hljs-no-escape><pre><code>
+                    using UnityEngine;
+
+                    public class MyFirstScript : MonoBehaviour {
+
+                        void Awake()
+                        {
+                            print("Five more minutes...");
+                        }
+
+                        void Start () {
+                            print("Okay, okay, I'm going...");
+                        }
+
+                        void FixedUpdate()
+                        {
+                            print("*poke* *poke* *poke*");
+                        }
+
+                        void Update () {
+                            print("what? what? what?");
+                        }
+
+                        void LateUpdate()
+                        {
+                            print("Stop bugging me!");
+                        }
+                    }
+                </code></pre></div>
+                <p> And the output is...</p>
+                <center><img src="../Images/flowFunctions.PNG"/></center>
+                <p> As expected, Awake first, Start second, FixedUpdate after, then Update and finally LateUpdate. The number next to the outputs indicates how many times the function were called. You might notice that FixedUpdate() was called less times than the rest. That is because it is indeed on a fixed step, that is many times, slower than every frame.</p>
+            </md-content>
+          </md-tab>
+            <md-tab label="On... Events">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">On... Events</h1>
+                <p> If you take a look at the MonoBehaviour class reference (<a hrfef="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"> reference</a>), you will notice a huge list of On... event functions.
+                These functions are triggered whenever something very specific happens. OnDestroy() for example happens when the gameObject is destroyed. OnEnable() in contrast, happens when you actually enable the game Object. Here you can find a list of the most commonly used ones, and what they do:</p>
+                <ul>
+                    <li>OnTriggerEnter / OnTriggerExit => Fired when a collider entered or exited a trigger(See Physics for more info)</li>
+                    <li>OnCollisionEnter / OnCollisionExit => Fired when there was a collider collided with another collider.</li>
+                    <li>OnEnable / OnDisable => Fired when the game object is enabled or disabled</li>
+                    <li>OnGui => Fired for GUI rendering and gui events. Can be multiple times a frame</li>
+                    <li>OnMouseDown / OnMouseDrag/ OnMouseEnter/ OnMouseExit / OnMouseOver/ OnMouseUp => Kinda selfexplanatory functions for handling mouse input</li>
+                </ul>
+                <p> Take a good look at this list and the MonoBehaviour reference, since using this functions can save you alot of time!</p>
+            </md-content>
+          </md-tab>
+            <md-tab label="Coroutines">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Coroutines</h1>
+                <p> Finally we arrived at Coroutines. Coroutines are essential if you want to make a good performing game, with awesome events happening at certain intervals.</p>
+                <p> A normal function runs to completion before returning. You can't pause a function mid execution, wait for the next frame, and then continue. That means that traditional function can't be used to (for example) gradually change the position of an object. But with coroutines you can!</p>
+                <p>A coroutine is like a function that has the ability to pause execution and return control to Unity but then to continue where it left off on the following frame. It is essentially a function declared with a return type of IEnumerator and with the yield return statement included somewhere in the body. The yield return line is the point at which execution will pause and be resumed the following frame. To set a coroutine running, you need to use the StartCoroutine function. The following code will spawn spheres every second, and after a codition is met, trigger an explosion.</p>
+                <div hljs hljs-no-escape><pre><code>
+                    using System.Collections.Generic;
+                    using System.Collections;
+                    using UnityEngine;
+
+                    public class MyFirstScript : MonoBehaviour {
+
+                        private bool canBoomBoomPow = false;
+                        private List&lt;GameObject&gt; spheres = new List&lt;GameObject&gt;();
+                        private Vector3[] vectors = new Vector3[3];
+                        
+                        void Start()
+                        {
+                            vectors[0] = Vector3.forward;
+                            vectors[1] = Vector3.right;
+                            vectors[2] = Vector3.up;
+                            StartCoroutine(spawnSphere());
+                            StartCoroutine(boom());
+                        }
+
+                        private IEnumerator spawnSphere()
+                        {
+                            for (int x = 0; x &lt; 15; x++)
+                            {
+                                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                                Rigidbody rigidBody = sphere.AddComponent&lt;Rigidbody&gt;();
+                                // Give the sphere a little random push
+                                rigidBody.AddForce(vectors[Random.Range(0,2)] * Random.Range(5f, 30f));
+                                spheres.Add(sphere);
+                                // Wait for half a second and then resume the loop
+                                yield return new WaitForSeconds(0.5f);
+                            }
+                            canBoomBoomPow = true;
+                        }
+
+                        private IEnumerator boom()
+                        {
+                            // Wait until the boolean is true
+                            yield return new WaitUntil(()=>canBoomBoomPow);
+                            spheres.ForEach((s) => {
+                                s.GetComponent&lt;Rigidbody>().AddExplosionForce(25000f, Vector3.zero, 1000f, 3.0F);
+                            });
+                        }
+                    }
+                </code></pre></div>
+                <center><video width="640" height="480" controls autoplay loop>
+                    <source = src="../Videos/coroutines.mp4" type = "video/mp4">
+                </video></center>
+                <p> As you can see some sphere flew right through the walls. Any idea why? Tell us!</p>
+            </md-content>
+          </md-tab>
+        </md-tabs>

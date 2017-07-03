@@ -1,4 +1,8 @@
-<html lang="en">
+<head>
+    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
           <md-tab label="Animations">
             <md-content class="md-padding">
@@ -50,11 +54,10 @@
                 <p> Now click on a transition arrow, and on the bottom right corner, click the "+" again. Then choose your trigger from the drop down menu. Uncheck the "Has Exit Time" checkbox higher up in the inspector. This will force the animation to transition immediatly when triggered, instead of waiting for some time.</p>
                 <center><img src="../Images/addConditions.png"/></center>
                 <p> To trigger the animation, just get the Animator component, and trigger the trigger whenever you need the animation to transition!</p>
-                <pre><code>
+                <div hljs hljs-no-escape><pre><code>
                     Animator animator = GetComponent&lt;Animator&gt;();
                     animator.SetTrigger ("MyFirstTrigger");
-                </code></pre>
+                </code></pre></div>
             </md-content>
           </md-tab>
-        </md-tabs>
-</html>
+</md-tabs>

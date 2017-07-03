@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
   <md-tab label="Component Architecture">
     <md-content class="md-padding">
@@ -25,13 +30,13 @@
             <source = src="../Videos/createScript.mp4" type = "video/mp4">
         </video></center>
         <p> We will dive into the wonderfull world of scripting later in the workshop, or if you are impatient you can go to the "Scripting" chapter. What you do need to know now, is that if you define a variable as public, you can change its value directly in the inspector! If you open the script you just created and add a value like this: </p>
-        <pre><code>
+        <div hljs hljs-no-escape><pre><code>
             public class MyFirstScript : MonoBehaviour {
 
                 public string question;
                 public int powerLevel;
             }
-        </code></pre>
+        </code></pre></div>
         <p> Then this is what you will see in the inspector of the game object you attach the script on.</p>
         <center><img src="../Images/publicVars.png" /></center>
         <p> Just click on the textfield to adjust the values! </p>

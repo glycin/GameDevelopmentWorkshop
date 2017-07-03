@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" href="../Highlightjs/styles/github.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+</head>
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
     <md-tab label="Input">
         <md-content class="md-padding">
@@ -8,20 +13,28 @@
                 <li>GetKeyUp(KeyCode key): Whether a key was just released (once).</li>
                 <li>GetKey(KeyCode key): Whether a key is being pressed now (continuous).</li>
             </ul>
-            <pre><code class ="cs">    private void Update() {
-    if (Input.GetKey(KeyCode.W)) { // Fires constantly
-        // Move forward
-    }
+            </p>
+            <div hljs hljs-no-escape><pre><code class ="cs">    
+            private void Update() {
+                if (Input.GetKey(KeyCode.W)) { // Fires constantly
+                    // Move forward
+                }
 
-    if (Input.GetMouseButton(0)) { // Fires once
-        // Shoot
-    }
-}</code></pre>Hardcoding a specific keycode makes the controls less configurable. Unity offers a built-in solution for that already, called Axes, which they can be easily configured either from Unity or in runtime.<pre><code class ="cs">    private void Update() {
-    if(Input.GetAxis("Vertical") > 0) { // More configurable
-        var amount = Input.GetAxis("Vertical");
-        // Move forward by amount [0-1]
-    }
-}</code></pre>The axis settings can be found under Input settings (Edit -> Project Settings -> Input)<br><center>Input settings<br><div><img src="../Images/input.png"/></div></center></p>
+                if (Input.GetMouseButton(0)) { // Fires once
+                    // Shoot
+                }
+            }
+            </code></pre></div>
+                Hardcoding a specific keycode makes the controls less configurable. Unity offers a built-in solution for that already, called Axes, which they can be easily configured either from Unity or in runtime.
+            <div hljs hljs-no-escape><pre><code class ="cs">    
+                private void Update() {
+                    if(Input.GetAxis("Vertical") > 0) { // More configurable
+                        var amount = Input.GetAxis("Vertical");
+                        // Move forward by amount [0-1]
+                    }
+                }
+                </code></pre></div>
+            <p>The axis settings can be found under Input settings (Edit -> Project Settings -> Input)<br><center>Input settings<br><div><img src="../Images/input.png"/></div></center></p>
         </md-content>
     </md-tab>
     <md-tab label="Interactive Objects">
