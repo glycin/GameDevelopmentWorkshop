@@ -1,0 +1,54 @@
+<html lang="en">
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+          <md-tab label="Types of Lights">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Lights</h1>
+                <p> Welcome to the beautiful world of lighting, where Unity shows lights and shadows, and you have no idea why! Jokes aside, lighting is very complex within games, and often very performance constly. In this workshop we will focus on the basics, without looking much on why things happen the way they happen.</p>
+                <p> Unity has 4 predefined lights:</p>
+                <ul>
+                    <li>Directional Light</li>
+                    <li>Point light</li>
+                    <li>Spotlight</li>
+                    <li>Area light</li>
+                </ul>
+                <p> These lights can be found under GameObject > Light. They behave exactly like you would expect. The directional light illumates all in a certain direction, the point light illumates a certain point, the spotlight illuminates in a cone and the area light illuminates an area for baked lightmaps (more on that later). The next video shows the lights and how they react.</p>
+                <center><video width="640" height="480" controls autoplay loop src="../Videos/lights.mov"></video></center>
+                <p> Play around with the values of the lights in the inspector, to see how each value affects the light and your scene. </p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Realtime vs Baked">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Realtime vs Baked lighting</h1>
+                <p> The Unity lights have two states. Realtime and Baked. Realtime means that Unity will calculate the lighting and shadows realtime on runtime. The more objects you have that have to react to the lights the slower this process gets. This is why lighting baking was introduced. Lighting baking is a technique widely used in games. Unity calculates the lights on the static objects in your scene. This creates a lightmap. The lightmap is used during runtime to show the lighting and shadows, without having to calculate these on the spot, thus saving alot of resources that can be used for other calculations. Baking takes alot of time though, and significally increases the size of your project since lightmaps are very large images. Also (as you might have guessed it) if you change a baked light during runtime, nothing will happen. </p>
+                <p>To set a light to bake or to calculate realtime, click the light object and in the inspector change its type. </p>
+                <center><img src="../Images/realtimevsbaked.png"/></center>
+                <p>To actually bake your lights you need to open the Lighting window (Toobar: Window > Lighting > Settings). Here you will see alot of settings that don't really make sense now. Thats okay, we don't understand them either! (Just joking...or am I?)</p>
+                <p> The baking button can be found on the bottom right, called "Generate Lighting". If you leave the auto generate button checked, Unity will keep baking your lights whenever something changes. Press the button to generate your lightmap!</p>
+                <center><img src="../Images/lightsettings.png"/></center>
+                <p> Your lightmap will kinda suck now, because it didn't map any lights. That is because you have no <b>Static</b> gameobjects. Lightmaps are only created for objects that will not move, (duh). To define an object as static, click on the desired object, and then check the static checkbox on the top right of the inspector.</p>
+                <center><img src="../Images/setstatic.png"/></center>
+                <p> In the end, you need to create a good combination of baked lights and realtime lights, to create awesome sceneries that engage your players!</p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Skyboxes">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Skyboxes</h1>
+                <p> Skyboxes are a wrapper around your entire scene that shows what the world looks like beyond your geometry. Skyboxes are rendered around the whole scene in order to give the impression of complex scenery at the horizon. In other words, they make your game world believable!</p>
+                <center><img src="../Images/SkyboxWindow.png"/></center>
+                <p>To implement a Skybox create a skybox material. Then add it to the scene by using the Window->Lighting menu item and specifying your skybox material as the Skybox in the Environment settings.</p>
+                <center><img src="../Images/environmentSettings.png"/></center>
+                <p>If you play around with different skyboxes (you can find some pretty cool ones in the asset store, or online) you will notice that the whole lighting of your scene is changing. That is because of the Environment Lighting settings, which can be found in the same window. If you change the Source from "Skybox" to "Color" you can easily illuminate everything. </p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Light Scripts">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Light Scripts</h1>
+                <p> Light scripting is very straightforward. You grab the Light component and programmatically change its values.</p>
+                <pre><code>
+                        Light light = GetComponent&lt;Light&gt; ();
+                        light.intensity = 9001;
+                </code></pre>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+</html>

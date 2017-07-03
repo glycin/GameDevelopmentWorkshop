@@ -1,0 +1,60 @@
+<html lang="en">
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+          <md-tab label="Animations">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Getting ready to animate</h1>
+                <p> Unity wouldn't be a complete game engine without Animations. The ability to create small files that hold translation data is key for any game. To start creating Animations you need two extra windows. The Animator and the Animation windows.</p>
+                <p> You can enable these by clicking the Window tab in the toolbar. Then click on "Animator" and "Animation"</p>
+                <center><img src="../Images/animationToolbox.png"/></center>
+                <p> You can drag the windows around, and place them somewhere that suit you. </p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Animator">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Animator</h1>
+                <p>When you have an animation clips ready to use, you need to use an Animator Controller to bring them together. An Animator Controller asset is created within Unity and allows you to maintain a set of animations for a character or object.</p>
+                <p>Animator Controller assets are created from the Assets menu, or from the Create menu in the Project window.</p>
+                <center><img src="../Images/createAnimator.png"/></center>
+                <p>In most situations, it is normal to have multiple animations and switch between them when certain game conditions occur. For example, you could switch from a walk animation to a jump whenever the spacebar is pressed. However even if you just have a single animation clip you still need to place it into an animator controller to use it on a Game Object.</p>
+                <p> When you click your newly created Animator object, you will get to see this:</p>
+                <center><img src="../Images/animator.png"/></center>
+                <p> This view will later be filled with Animation clips, that we will add later.</p>
+            </md-content>
+          </md-tab>
+          <md-tab label="Creating Animations">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Creating animations clips</h1>
+                <p> Animation Clips are the smallest building blocks of animation in Unity. They represent an isolated piece of motion, such as RunLeft, Jump, or Crawl, and can be manipulated and combined in various ways to produce lively end results. Animation clips can be selected from imported FBX data, or can be created by hand. For this workshop, we will create animations by hand.</p>
+                <p> To create an animation clip, just right click in the Project window, then Create > Animation. You have your first clip!The next video shows how you can add the Animation clip to the previously created Animator, and start animating!</p>
+                <center><video width="640" height="480" controls autoplay loop src="../Videos/animationClip.mov"></video></center>
+                <p> Now that you have an Animation clip attached to the Animator, you can start Animating. To do that, just press the "Add Property button and then choose the property you want to animate. A good one is Transform > position. Now you can change the position of the object based on time elapsed, as shown in the video below.</p>
+                <center><video width="640" height="480" controls autoplay loop src="../Videos/createClip.mov"></video></center>
+                <p> Like this, you can create Animations for pretty much every property of an object, from its rotation to its color.</p>
+                <p> If you want an Animation to loop, just click on the clip in the project window, and check the loop time checkbox. It will now automatically loop!</p>
+                <center><img src="../Images/loop.png"/></center>
+            </md-content>
+          </md-tab>
+            <md-tab label="Animator & Animations">
+            <md-content class="md-padding">
+              <h1 class="md-display-1"> Configuring animations in the animator</h1>
+                <p> Now that you have your first clip, you can configure it in the Animator. If you go to the Animator window, and click on the freshly added animation clip, you will see it's properties in the Inspector. Here you can change it's speed and set transitions. The below video shows how! </p>
+                <center><video width="640" height="480" controls autoplay loop src="../Videos/transitions.mov"></video></center>
+                <p> You can click on the states or the transition arrows to configure the animations. To correctly blend animations takes alot of practice, so keep at it!</p>
+            </md-content>
+          </md-tab>
+            <md-tab label="Transition Scripting">
+            <md-content class="md-padding">
+              <h1 class="md-display-1">Triggering transitions through scripts</h1>
+                <p> While creating standard transitions is cool, it is even cooler to trigger them by script! First you will need a parameter that will trigger the transition. You do that by clicking on the "+" in the parameters tab of the Animator window. Add a Trigger and name it something awesome.</p>
+                <center><img src="../Images/addParameter.png"/></center>
+                <p> Now click on a transition arrow, and on the bottom right corner, click the "+" again. Then choose your trigger from the drop down menu. Uncheck the "Has Exit Time" checkbox higher up in the inspector. This will force the animation to transition immediatly when triggered, instead of waiting for some time.</p>
+                <center><img src="../Images/addConditions.png"/></center>
+                <p> To trigger the animation, just get the Animator component, and trigger the trigger whenever you need the animation to transition!</p>
+                <pre><code>
+                    Animator animator = GetComponent&lt;Animator&gt;();
+                    animator.SetTrigger ("MyFirstTrigger");
+                </code></pre>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+</html>
